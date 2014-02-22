@@ -21,6 +21,7 @@ class searchResults extends CI_Controller {
 		// Get the Longitude and Latiude
 		$data['lng'] = $this->input->post('long');
 		$data['lat'] = $this->input->post('lat');
+		$data['ulearnTopic'] = $this->input->post('ulearnTopic');
 		// Query the database
 
 		// Process the Search Results (Curate them)

@@ -58,6 +58,7 @@
               <br/><br/>
               <input type="hidden" id = "long" name="long" value='45.99'/>
               <input type="hidden" id = "lat" name="lat" value='-70.22'/>
+              <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
              <button class="btn btn-default" type="button" name="loginButton" value="Login" id="submit-button">Search</button>
             </form>
            </div> 
@@ -100,7 +101,7 @@
       // we first grab the search query
       //$('#id-form-landing').submit(function(e){
         $('#submit-button').click(function(e){
-          alert('Handler for submit called');
+          //alert('Handler for submit called');
           // prevent the default submission, dissect the query, get the latitude and longitude and then finally
           // submit using jquery post
           e.preventDefault();
@@ -185,7 +186,7 @@
                   userLatitude = latitude;
                   userLongitude = longitude;
 
-                  console.log("latitude  : " + userLatitude + "  longitude   : " + userLongitude);
+                  //console.log("latitude  : " + userLatitude + "  longitude   : " + userLongitude);
 
                   if(userLongitude == 0 && userLatitude == 0)
                   {
@@ -196,6 +197,7 @@
                   {
                     $('#lat').val(userLatitude);
                     $('#long').val(userLongitude);
+                    $('#ulearnTopic').val(learnTopic);
                     $('#id-form-landing').submit();
                   }
 
@@ -232,6 +234,7 @@
                       {
                         $('#lat').val(userLatitude);
                         $('#long').val(userLongitude);
+                        $('#ulearnTopic').val(learnTopic);
                         $('#id-form-landing').submit();
                       }
 
