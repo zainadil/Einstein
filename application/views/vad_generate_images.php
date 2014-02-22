@@ -10,7 +10,21 @@
 
 
 //1) Specify Image URL
-$targetFileIcon = "new_nidale.jpg";
+// $targetFileIcon = "new_nidale.jpg";
+// $targetFileIcon = "../../images/unprocessed/nidale_unprocessed.jpg";
+// $targetFileIcon = '../../images/nidalelarge.png';
+
+$url_concat_name = 'nidale';
+// $targetFileIcon = 'http://localhost/Einstien/images/unprocessed/' . $url_concat_name . '_unprocessed.jpg';
+$targetFileIcon = 'images/unprocessed/' . $url_concat_name . '_unprocessed.jpg';
+// $destinationFile = 'http://localhost/Einstien/images/processed' . $url_concat_name . '.png';
+
+// $targetFileIcon = "nidale.jpg";
+
+
+// ../../images/unprocessed/nidale_unprocessed.jpg
+// ../../images/unprocessed/nidale_200.png
+// ../../images/unprocessed/nidale_circle.png
 
 //2) load the image
 $im = loadImage($targetFileIcon);
@@ -18,27 +32,23 @@ $im = loadImage($targetFileIcon);
 $square_image = make_square_from_rectangle($im);
 //5) scale the square image down to 200x200
 $im = scale_image_down_to_200($square_image);
-imagepng($im, 'nidale_hajjar');
-//6) make it round, also 100x100
+
+// imagepng($im, '../../images/processed/nidale_200.png');
+imagepng($im, 'images/processed/' . $url_concat_name . '_200.png');
+
+//6) make it round (100x100)
+$im = scale_image_down_to_100($square_image);
 $round_100_image = vad_round_image_from_rectangle($im, imagecolorat($im, 0, 0));
 
-//7) scale down the round images to desired width and save to disc
-$image_scaled_90 = save_scaled_image($round_100_image, 90);
-imagepng($image_scaled_90, 'nidale_round_90.png');
+// imagepng($im, '../../images/processed/nidale_circle.png');
+// imagepng($im, 'http://localhost/Einstien/images/processed/' . $url_concat_name . '_circle.png');
+imagepng($round_100_image, 'images/processed/' . $url_concat_name . '_circle.png');
 
-$image_scaled_60 = save_scaled_image($round_100_image, 60);
-imagepng($image_scaled_60, 'nidale_round_60.png');
 
 //clean up used images
 imagedestroy($im);
 imagedestroy($round_100_image);
-imagedestroy($image_scaled_90);
-imagedestroy($image_scaled_60);
 imagedestroy($square_image);
-
-
-
-
 
 
 
@@ -62,6 +72,18 @@ function scale_image_down_to_200($img)
     $height = imagesy($img);
     $ratio = ($width/200);//
     $new_width = 200;
+    $new_height = floor($height/$ratio);
+    $out = ImageCreateTrueColor($new_width,$new_height);
+    imagecopyresized($out, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+    return $out;
+}
+
+function scale_image_down_to_100($img)
+{
+    $width = imagesx($img);
+    $height = imagesy($img);
+    $ratio = ($width/100);//
+    $new_width = 100;
     $new_height = floor($height/$ratio);
     $out = ImageCreateTrueColor($new_width,$new_height);
     imagecopyresized($out, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
