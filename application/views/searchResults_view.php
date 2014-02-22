@@ -58,6 +58,7 @@
 
 
 
+<!-- This SHOULD BE IN A LOOP FOR THE DATA -->
 
 <!-- ZAIN -->
       <div class = "jumbotron" id="master001" onclick="expand_selected_master(this.id)">
@@ -80,6 +81,7 @@
           <p>abcd</p>
           <p>abcd</p>
           <p>abcd</p>
+           <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://google.ca" data-via="Einstien" data-lang="en" data-text = "Checkout Joh Doe, He's giving guitar Lessons" data-hashtags = "GuitarLessons" data-related="anywhereTheJavascriptAPI" data-count="vertical">Tweet</a>
         </div>
 
       </div>
@@ -160,6 +162,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgegoVE4gn1zEC06gILV77MdfbNybUO3E&sensor=false">
     </script>
