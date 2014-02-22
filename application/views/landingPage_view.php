@@ -166,9 +166,9 @@
               searchLocation = "navigator";
               locationFound = false;
               modifiedQuery = searchQuery;
-              learnTopic = (modifiedQuery.split("how to "))[1];
+              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : "";
             }
-
+            
             // if user did not enter a skill, then remind
             if(learnTopic == "")
             {
