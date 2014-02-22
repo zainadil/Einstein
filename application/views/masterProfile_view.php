@@ -48,67 +48,20 @@
 
     <div class="container">
 
-       <!-- Main component for a primary marketing message or call to action -->
-         <div id="map-canvas" class = "img-thumbnail" style = " height : 500px; width : 100%;"></div>
-
-      <div class = "jumbotron">
+      <div class = "jumbotron" style = "height : 700px;">
         <div class = "active-master">
             
             <div id = "master-img">
-              <img src="../images/zainlarge.png" alt="Zain Adil" class="active-master-image">
+              <img src="../images/zainlarge.png" alt="Zain Adil" class="active-master-profile-image">
             </div>
             
-            <div id = "master-details">
-              <div class = "active-master-name" > Zain Adil</div> <div id="star"></div>
+            <div id = "master-profile-details">
+              <div class = "active-master-profile-name" > Mehsum Mansoor Naqvi </div> <div id="star"></div>
             </div>
 
          </div>
-
-            <div id = "master-details-page">
-              <a href = "../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
-            </div>
-      </div>
-
-      <div>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+          <h2> Location </h2>
+          <div id="map-canvas" class = "img-thumbnail" style = " height : 200px; width : 80%;">
       </div>
          
     </div> <!-- /container -->
@@ -131,10 +84,7 @@
         // Load this from an XML/JSON File that's sent from the controller
         var business_locations = 
             [
-                ['Vadim Stark',     '../images/vadim.png',        39.208518, -94.512635],
-                ['You', '../images/zain.png', 39.241116, -94.51759],
-                ['Nidale Hajjar', '../images/nidale.png',     39.246116, -94.57759],
-                ['Mehsum Mansoor',         '../images/mehsum.png',          39.246472, -94.443878]
+                ['You', '../images/zain.png', 39.241116, -94.51759]
             ];
 
         for(var i = 0; i < business_locations.length; i++)
@@ -144,7 +94,7 @@
               var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(business_locations[i][2], business_locations[i][3]),
                     map: map,
-                    icon: image,
+                    //icon: image,
                     title: business_locations[i][0],
                 });
 

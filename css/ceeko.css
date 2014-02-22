@@ -36,6 +36,12 @@ body {
    border-radius: 40px;
 }
 
+.active-master-profile-image{
+   width: 120px;
+   height: 120px;
+   border-radius: 60px;
+}
+
 .active-master-name{
 	display: inline-block;
 	font-size: 25px;
@@ -49,6 +55,25 @@ body {
 	margin-top: 8px;
 	margin-left: 3px;
 	float:right;
+    display: inline-block;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+    text-align: center;
+}
+
+#master-profile-details{
+	margin-top: 20px;
+	margin-left: 20px;
+	float:right;
+    text-align: center;
+    display: inline-block;
+    text-align: -moz-center;
+    text-align: -webkit-center;
+}
+
+.active-master-profile-name{
+	display: inline-block;
+	font-size: 35px;
 }
 
 #master-details-page{
