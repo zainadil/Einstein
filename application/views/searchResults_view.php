@@ -66,7 +66,7 @@
             </div>
             
             <div id = "master-details">
-              <div class = "active-master-name" > Zain Adil</div> <div id="star"></div>
+              <div class = "active-master-name" > Zain Adil</div> <div id="zainadil"></div>
             </div>
       </div>
 
@@ -85,7 +85,7 @@
             </div>
             
             <div id = "master-details">
-              <div class = "active-master-name" > Nidale Hajjar</div> <div id="star"></div>
+              <div class = "active-master-name" > Nidale Hajjar</div> <div id="nidalehajjar"></div>
             </div>
       </div>
 
@@ -250,7 +250,9 @@
     <!-- Star ratings for masters -->
     <script src="../../js/jquery.raty.min.js"></script>
     <script type="text/javascript">
-        $('#star').raty({ path: '../../js/img',readOnly: true, score: 4.5});
+    // Change to ID and Do this in a LOOP for all the masters on screen
+        $('#zainadil').raty({ path: '../../js/img',readOnly: true, score: 4.5});
+         $('#nidalehajjar').raty({ path: '../../js/img',readOnly: true, score: 2});
 
     </script>
 
