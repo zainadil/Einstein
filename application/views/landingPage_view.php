@@ -37,9 +37,12 @@
           <!-- <img src = "images/mustache-header.png" class "navbar-btn" id = "header-img"> -->
           <a class="navbar-brand" href="../Einstien" id = "header-text">Einstein</a>
         </div>
-        
+      
           <ul class="nav navbar-nav navbar-right">
-            <button type="button" class="btn btn-primary navbar-btn">Sign in</button>
+            <?php if($login < 1) 
+              echo "<a href='<?= $login_url ?>' class='btn btn-primary navbar-btn'>Sign in</a>";
+              else echo "Logged In";
+            ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
