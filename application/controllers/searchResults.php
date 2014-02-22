@@ -19,9 +19,8 @@ class searchResults extends CI_Controller {
 		$searchQuery = $this->input->post('query');
 		
 		// Get the Longitude and Latiude
-		$long= $this->input->post('long');
-		$lat = $this->input->post('lat');
-
+		$data['lng'] = $this->input->post('long');
+		$data['lat'] = $this->input->post('lat');
 		// Query the database
 
 		// Process the Search Results (Curate them)
@@ -31,9 +30,7 @@ class searchResults extends CI_Controller {
 
 		//IMPORTANT - FIX UP THE CSS LINKS AND EVEYTHING ELSE IN THE VIEWS
 		
-		$this->load->view("searchResults_view");
-
-
+		$this->load->view("searchResults_view", $data);
 
 	}
 }

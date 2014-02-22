@@ -58,7 +58,7 @@
               <br/><br/>
               <input type="hidden" id = "long" name="long" value='45.99'/>
               <input type="hidden" id = "lat" name="lat" value='-70.22'/>
-             <button class="btn btn-default" type="submit" name="loginButton" value="Login">Search</button>
+             <button class="btn btn-default" type="button" name="loginButton" value="Login" id="submit-button">Search</button>
             </form>
            </div> 
     </div> <!-- /container -->
@@ -67,6 +67,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgegoVE4gn1zEC06gILV77MdfbNybUO3E&sensor=false"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -97,8 +98,9 @@
     // Only disect out the Location, do the rest in PHP in the Backend.
 
       // we first grab the search query
-      $('#id-form-landing').submit(function(e){
-          //alert('Handler for submit called');
+      //$('#id-form-landing').submit(function(e){
+        $('#submit-button').click(function(e){
+          alert('Handler for submit called');
           // prevent the default submission, dissect the query, get the latitude and longitude and then finally
           // submit using jquery post
           e.preventDefault();
@@ -108,6 +110,8 @@
           var searchLocation = "";
           var learnTopic = "";
           var locationFound = false;
+          var userLongitude = 0;
+          var userLatitude = 0;
           //alert(searchQuery);
 
           if(searchQuery == '')
@@ -158,8 +162,88 @@
               learnTopic = (modifiedQuery.split("how to "))[1];
             }
 
+            // if user did not enter a skill, then remind
+            if(learnTopic == "")
+            {
+              alert("Please enter a skill to learn");
+              return;
+            }
+
+            // now check if user location if provided or not and depending on that 
+            // get the latitude and longitude, or use the nagivator location to use 
+            // as current user location
+            if(!locationFound)
+            {
+              //alert("User did not specify a location");
+              //return;
+              if(navigator.geolocation)
+              {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                  var latitude = position.coords.latitude;
+                  var longitude = position.coords.longitude;
+
+                  userLatitude = latitude;
+                  userLongitude = longitude;
+
+                  console.log("latitude  : " + userLatitude + "  longitude   : " + userLongitude);
+
+                  if(userLongitude == 0 && userLatitude == 0)
+                  {
+                    alert("Unable to find the specified location. Please try again!");
+                    return;
+                  }
+                  else
+                  {
+                    $('#lat').val(userLatitude);
+                    $('#long').val(userLongitude);
+                    $('#id-form-landing').submit();
+                  }
+
+                });
+              }
+              else
+              {
+                alert("Geolocation API is not supported in your browser. Please specify a location in your search!")
+                return;
+              }
+
+            }
+            else
+            {
+
+              var geocoder = new google.maps.Geocoder();
+              var address = searchLocation;
+              geocoder.geocode({
+                'address': address
+              }, function (results, status) {
+                  if (status == google.maps.GeocoderStatus.OK) {
+
+                      userLatitude = results[0].geometry.location.lat();
+                      userLongitude = results[0].geometry.location.lng();
+
+                      console.log("latitude: " + userLatitude + "  longitude: " + userLongitude);
+
+                     if(userLongitude == 0 && userLatitude == 0)
+                      {
+                        alert("Unable to find the specified location. Please try again!");
+                        return;
+                      }
+                      else
+                      {
+                        $('#lat').val(userLatitude);
+                        $('#long').val(userLongitude);
+                        $('#id-form-landing').submit();
+                      }
+
+                  } else
+                  {
+                    alert("No Results founds");
+                  }
+              });
+
+            } // end else
+
             //alert("learnTopic : " + learnTopic + " at searchLocation: " + searchLocation);
-            //return;
 
           }  // end else query
 
