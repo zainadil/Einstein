@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+     <!-- Using this Style Sheet for the Einstien Font - Not sure if it flows with the complete theme - Ask Omeed for suggestions -->
+    <!-- http://designshack.net/articles/css/the-10-best-script-and-handwritten-google-web-fonts/ -->
+    <link href="http://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet" type="text/css">
+
     <title>Einstein - Discover and Learn</title>
 
+
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/ceeko.css" rel="stylesheet">
+    <link href="../../css/ceeko.css" rel="stylesheet">
 
   </head>
 
@@ -27,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../../Einstien">Einstein</a>
+          <a class="navbar-brand" href="../../../Einstien" id = "header-text">Einstein</a>
         </div>
         
         <!-- Search Bar on the Top Nav-->
@@ -53,13 +58,11 @@
 
 
 
-
-
       <div class = "jumbotron" id="tutor001">
         <div class = "active-master">
             
             <div id = "master-img">
-              <img src="../images/zainlarge.png" alt="Zain Adil" class="active-master-image">
+              <img src="../../images/zainlarge.png" alt="Zain Adil" class="active-master-image">
             </div>
             
             <div id = "master-details">
@@ -68,7 +71,7 @@
       </div>
 
             <div id = "master-details-page">
-              <a href = "../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
+              <a href = "../../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
             </div>
       </div>
 
@@ -78,7 +81,7 @@
         <div class = "active-master">
             
             <div id = "master-img">
-              <img src="../images/nidalelarge.png" alt="Nidale Hajjar" class="active-master-image">
+              <img src="../../images/nidalelarge.png" alt="Nidale Hajjar" class="active-master-image">
             </div>
             
             <div id = "master-details">
@@ -87,7 +90,7 @@
       </div>
 
             <div id = "master-details-page">
-              <a href = "../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
+              <a href = "../../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
             </div>
       </div>
 
@@ -156,6 +159,7 @@
 
       function initialize() {
         var mapOptions = {
+          scrollwheel: false,
           center: new google.maps.LatLng(39.241116, -94.51759),
           zoom: 12 // Load this value based on the search result
         };
@@ -164,10 +168,10 @@
         // Load this from an XML/JSON File that's sent from the controller
         var business_locations = 
         [
-            ['Vadim Stark',     '../images/vadim.png', 39.208518, -94.512635, "tutor004"],
-            ['You', '../images/zain.png', 39.241116, -94.51759, "tutor001"],
-            ['Nidale Hajjar', '../images/nidale.png', 39.246116, -94.57759, "tutor002"],
-            ['Mehsum Mansoor', '../images/mehsum.png', 39.246472, -94.443878, "tutor003"]
+            ['Vadim Stark',     '../../images/vadim.png', 39.208518, -94.512635, "tutor004"],
+            ['You', '../../images/zain.png', 39.241116, -94.51759, "tutor001"],
+            ['Nidale Hajjar', '../../images/nidale.png', 39.246116, -94.57759, "tutor002"],
+            ['Mehsum Mansoor', '../../images/mehsum.png', 39.246472, -94.443878, "tutor003"]
         ];
 
 
@@ -202,11 +206,6 @@
               addListener(i);
 
         }
-
-
-
-
-
 
       }
 
@@ -249,12 +248,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     
     <!-- Star ratings for masters -->
-    <script src="../js/jquery.raty.min.js"></script>
+    <script src="../../js/jquery.raty.min.js"></script>
     <script type="text/javascript">
-        $('#star').raty({ path: '../js/img',readOnly: true, score: 4.5});
+        $('#star').raty({ path: '../../js/img',readOnly: true, score: 4.5});
 
     </script>
 
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
   </body>
 </html>
