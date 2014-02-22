@@ -8,7 +8,6 @@
     <!-- Using this Style Sheet for the Einstien Font - Not sure if it flows with the complete theme - Ask Omeed for suggestions -->
     <!-- http://designshack.net/articles/css/the-10-best-script-and-handwritten-google-web-fonts/ -->
     <link href="http://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet" type="text/css">
-
     
     <title>Einstein - Discover and Learn</title>
 
@@ -81,6 +80,7 @@
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
+          scrollwheel: false,
           center: new google.maps.LatLng(39.241116, -94.51759),
           zoom: 12 // Load this value based on the search result
         };
