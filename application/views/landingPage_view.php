@@ -60,13 +60,17 @@
             </div>
           <br/>
           <form id="id-form-landing" class="form-signin" method="POST" action="../../Einstien/index.php/searchResults/processSearch">
-            <input type="text" class="form-control input-lg search-bar" name="query" id="query" placeholder="Disover and Learn"autofocus=""></input>
+            <input type="text" class="form-control input-lg search-bar" name="query" id="query" placeholder="Discover and Learn"autofocus=""></input>
               <br/><br/>
               <input type="hidden" id = "long" name="long" value='45.99'/>
               <input type="hidden" id = "lat" name="lat" value='-70.22'/>
               <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
              <button class="btn btn-default" type="button" name="loginButton" value="Login" id="submit-button">Search</button>
             </form>
+
+            <br />
+            <div class="alert alert-danger" id="alert-message" style="display:none;max-width:800px;margin:auto">Error!</div>
+
            </div> 
     </div> <!-- /container -->
 
@@ -119,11 +123,13 @@
           var locationFound = false;
           var userLongitude = 0;
           var userLatitude = 0;
-          //alert(searchQuery);
+
+          var alertMessage = $('#alert-message');
 
           if(searchQuery == '')
           {
-            alert('Must enter a search term!');
+            alertMessage.text("Must enter a search term.").show().delay(3000).fadeOut();
+            //alert('Must enter a search term!');
             return;
           }
           else
@@ -166,13 +172,13 @@
               searchLocation = "navigator";
               locationFound = false;
               modifiedQuery = searchQuery;
-              learnTopic = (modifiedQuery.split("how to "))[1];
+              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : "";
             }
 
             // if user did not enter a skill, then remind
             if(learnTopic == "")
             {
-              alert("Please enter a skill to learn");
+              alertMessage.text("Please enter a skill to learn.").show().delay(3000).fadeOut();
               return;
             }
 
@@ -196,7 +202,7 @@
 
                   if(userLongitude == 0 && userLatitude == 0)
                   {
-                    alert("Unable to find the specified location. Please try again!");
+                    alertMessage.text("Unable to find the specified location. Please try again!").show().delay(3000).fadeOut();
                     return;
                   }
                   else
@@ -211,7 +217,7 @@
               }
               else
               {
-                alert("Geolocation API is not supported in your browser. Please specify a location in your search!")
+                alertMessage.text("Geolocation API is not supported in your browser. Please specify a location in your search!").show().delay(3000).fadeOut();
                 return;
               }
 
@@ -233,7 +239,7 @@
 
                      if(userLongitude == 0 && userLatitude == 0)
                       {
-                        alert("Unable to find the specified location. Please try again!");
+                        alertMessage.text("Unable to find the specified location. Please try again!").show().delay(3000).fadeOut();
                         return;
                       }
                       else
@@ -246,13 +252,12 @@
 
                   } else
                   {
-                    alert("No Results founds");
+                    alertMessage.text("No results found!").show().delay(3000).fadeOut();
+                    return;
                   }
               });
 
             } // end else
-
-            //alert("learnTopic : " + learnTopic + " at searchLocation: " + searchLocation);
 
           }  // end else query
 
