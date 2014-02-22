@@ -158,7 +158,7 @@
               learnTopic = (modifiedQuery.split("how to "))[1];
             }
 
-            alert("learnTopic : " + learnTopic + " at searchLocation: " + searchLocation);
+            //alert("learnTopic : " + learnTopic + " at searchLocation: " + searchLocation);
             //return;
 
           }  // end else query
