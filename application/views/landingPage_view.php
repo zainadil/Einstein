@@ -40,7 +40,7 @@
       
           <ul class="nav navbar-nav navbar-right">
             <?php if($login < 1) 
-              echo "<a href='<?= $login_url ?>' class='btn btn-primary navbar-btn'>Sign in</a>";
+              echo "<a href='$login_url' class='btn btn-primary navbar-btn'>Sign in</a>";
               else echo "Logged In";
             ?>
           </ul>

@@ -27,7 +27,7 @@ class LandingPage extends CI_Controller {
 
 		if ($user) {
 			$data['login'] = 1;			
-			echo ($data['user_profile'][id]); die();
+			//echo ($data['user_profile']['id']); 
 		} else {
 			$data['login'] = 0;
 			$data['login_url'] = $this -> facebook -> getLoginUrl();
