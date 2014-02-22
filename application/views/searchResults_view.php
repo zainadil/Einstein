@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>CeeKo - Discover and Learn</title>
+    <title>Einstein - Discover and Learn</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../../Einstien">CeeKo</a>
+          <a class="navbar-brand" href="../../Einstien">Einstein</a>
         </div>
         
         <!-- Search Bar on the Top Nav-->
@@ -51,7 +51,11 @@
        <!-- Main component for a primary marketing message or call to action -->
          <div id="map-canvas" class = "img-thumbnail" style = " height : 500px; width : 100%;"></div>
 
-      <div class = "jumbotron">
+
+
+
+
+      <div class = "jumbotron" id="tutor001">
         <div class = "active-master">
             
             <div id = "master-img">
@@ -61,13 +65,35 @@
             <div id = "master-details">
               <div class = "active-master-name" > Zain Adil</div> <div id="star"></div>
             </div>
-
-         </div>
+      </div>
 
             <div id = "master-details-page">
               <a href = "../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
             </div>
       </div>
+
+
+
+      <div class = "jumbotron" id="tutor002">
+        <div class = "active-master">
+            
+            <div id = "master-img">
+              <img src="../images/nidalelarge.png" alt="Nidale Hajjar" class="active-master-image">
+            </div>
+            
+            <div id = "master-details">
+              <div class = "active-master-name" > Nidale Hajjar</div> <div id="star"></div>
+            </div>
+      </div>
+
+            <div id = "master-details-page">
+              <a href = "../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
+            </div>
+      </div>
+
+
+
+
 
       <div>
         <br/>
@@ -121,6 +147,13 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgegoVE4gn1zEC06gILV77MdfbNybUO3E&sensor=false">
     </script>
     <script type="text/javascript">
+
+
+
+
+    //GLOBAL VARIABLES
+    var allow_scrolling_to_div = true;
+
       function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(39.241116, -94.51759),
@@ -130,29 +163,86 @@
 
         // Load this from an XML/JSON File that's sent from the controller
         var business_locations = 
-            [
-                ['Vadim Stark',     '../images/vadim.png',        39.208518, -94.512635],
-                ['You', '../images/zain.png', 39.241116, -94.51759],
-                ['Nidale Hajjar', '../images/nidale.png',     39.246116, -94.57759],
-                ['Mehsum Mansoor',         '../images/mehsum.png',          39.246472, -94.443878]
-            ];
+        [
+            ['Vadim Stark',     '../images/vadim.png', 39.208518, -94.512635, "tutor004"],
+            ['You', '../images/zain.png', 39.241116, -94.51759, "tutor001"],
+            ['Nidale Hajjar', '../images/nidale.png', 39.246116, -94.57759, "tutor002"],
+            ['Mehsum Mansoor', '../images/mehsum.png', 39.246472, -94.443878, "tutor003"]
+        ];
+
+
+        var markers = [];
+        var master_ids = [];
 
         for(var i = 0; i < business_locations.length; i++)
-            {
+        {
 
               var image = business_locations[i][1];
-              var marker = new google.maps.Marker({
+              var id_of_master = business_locations[i][4];
+
+              marker = new google.maps.Marker({
                     position: new google.maps.LatLng(business_locations[i][2], business_locations[i][3]),
                     map: map,
                     icon: image,
                     title: business_locations[i][0],
                 });
 
-                google.maps.event.addListener(marker, "click", function() {
-                   alert("Hi I am a tutor");
-                });    
-          }
+              markers.push(marker);
+              master_ids.push(id_of_master);
+
+              var addListener = function (i) {
+              google.maps.event.addListener(marker, 'click', function(){
+                  // infoWindows[i].open(map, positions[i]);
+                  // alert(id_of_tutor);                 
+                  // alert(master_ids[i]);
+                  scroll_to_master(master_ids[i]);                 
+              });
+              }
+
+              addListener(i);
+
+        }
+
+
+
+
+
+
       }
+
+      function scroll_to_master(id)
+      {
+        if (allow_scrolling_to_div)
+        {
+          var concat_id = '#' + id;
+          var top = $(concat_id).position().top;
+          var start_y = $(window).scrollTop();
+          do_the_scroll(top-55, 1, 1, start_y);
+          allow_scrolling_to_div = false;
+        }
+      }
+
+      function do_the_scroll(desired_y, speed, direction, start_y)
+      {
+        var current_y = $(window).scrollTop();
+      
+        speed +=2;
+
+        if (current_y + speed < desired_y)
+        {
+           $("html, body").scrollTop(current_y+speed);
+           setTimeout( function() {  do_the_scroll(desired_y, speed, direction) } ,15);
+        }
+        else
+        {
+          //done scrolling
+          $("html, body").scrollTop(desired_y);
+          allow_scrolling_to_div = true;
+        }
+      }
+
+
+
 
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
