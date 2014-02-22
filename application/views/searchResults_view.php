@@ -58,7 +58,9 @@
 
 
 
-      <div class = "jumbotron" id="tutor001">
+
+<!-- ZAIN -->
+      <div class = "jumbotron" id="master001" onclick="expand_selected_master(this.id)">
         <div class = "active-master">
             
             <div id = "master-img">
@@ -68,16 +70,22 @@
             <div id = "master-details">
               <div class = "active-master-name" > Zain Adil</div> <div id="zainadil"></div>
             </div>
+        </div>
+
+        <div id = "master-details-page">
+          <a href = "../../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
+        </div>
+
+        <div class="jumbotron2" id="master001-extended" style="display:none;">
+          <p>abcd</p>
+          <p>abcd</p>
+          <p>abcd</p>
+        </div>
+
       </div>
 
-            <div id = "master-details-page">
-              <a href = "../../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
-            </div>
-      </div>
-
-
-
-      <div class = "jumbotron master-after-first" id="tutor002">
+<!-- NIDALE -->
+      <div class = "jumbotron master-after-first" id="master002" onclick="expand_selected_master(this.id)">
         <div class = "active-master">
             
             <div id = "master-img">
@@ -87,17 +95,23 @@
             <div id = "master-details">
               <div class = "active-master-name" > Nidale Hajjar</div> <div id="nidalehajjar"></div>
             </div>
-      </div>
+        </div>
 
-            <div id = "master-details-page">
-              <a href = "../../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
-            </div>
-      </div>
+        <div id = "master-details-page">
+          <a href = "../../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
+        </div>
+
+        <div class="jumbotron2" id="master002-extended" style="display:none;">
+          <p>abcd</p>
+          <p>abcd</p>
+          <p>abcd</p>
+        </div>
+
+    </div>
 
 
 
-
-
+<!-- END OF PAGE EMPTY SPACE JUNK -->
       <div>
         <br/>
         <br/>
@@ -168,10 +182,10 @@
         // Load this from an XML/JSON File that's sent from the controller
         var business_locations = 
         [
-            ['Vadim Stark',     '../../images/vadim.png', 39.208518, -94.512635, "tutor004"],
-            ['You', '../../images/zain.png', 39.241116, -94.51759, "tutor001"],
-            ['Nidale Hajjar', '../../images/nidale.png', 39.246116, -94.57759, "tutor002"],
-            ['Mehsum Mansoor', '../../images/mehsum.png', 39.246472, -94.443878, "tutor003"]
+            ['Vadim Stark',     '../../images/vadim.png', 39.208518, -94.512635, "master004"],
+            ['You', '../../images/zain.png', 39.241116, -94.51759, "master001"],
+            ['Nidale Hajjar', '../../images/nidale.png', 39.246116, -94.57759, "master002"],
+            ['Mehsum Mansoor', '../../images/mehsum.png', 39.246472, -94.443878, "master003"]
         ];
 
 
@@ -238,6 +252,14 @@
           allow_scrolling_to_div = true;
         }
       }
+
+
+      function expand_selected_master(master_id)
+      {
+          var num = master_id.substring(6, master_id.length); // master001 -> 001
+          $("#master" + num + "-extended").slideToggle();
+      }
+
 
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>

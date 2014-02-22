@@ -118,3 +118,8 @@ body {
 	/*This Change affects the Margins - Vadim to fix this later*/
 	/*margin-top: -25px;*/
 }
+
+/* Vad Fix margin for master info div */
+.jumbotron {
+margin-bottom: 6px;
+}
