@@ -30,6 +30,30 @@ class searchResults extends CI_Controller {
 		
 
 		//IMPORTANT - FIX UP THE CSS LINKS AND EVEYTHING ELSE IN THE VIEWS
+
+		$user = $this -> facebook -> getUser();
+
+		if ($user) {
+			try {
+				$data['user_profile'] = $this -> facebook -> api('/me');
+				// $friends = $this -> facebook -> api('/me/friends');
+				// $friends = $friends['data'];
+
+				// $jsonData = json_encode($friends);
+				// $data['user_friends'] = $jsonData;
+				
+			} catch (FacebookApiException $e) {
+				$user = null;
+			}
+		}
+
+		if ($user) {
+			$data['login'] = 1;			
+			//echo ($data['user_profile']['id']); 
+		} else {
+			$data['login'] = 0;
+			$data['login_url'] = $this -> facebook -> getLoginUrl();
+		}
 		
 		$this->load->view("searchResults_view", $data);
 

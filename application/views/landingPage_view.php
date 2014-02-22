@@ -41,8 +41,8 @@
           <ul class="nav navbar-nav navbar-right">
             <?php if($login < 1) 
               echo "<a href='$login_url' class='btn btn-primary navbar-btn'>Sign in</a>";
-              else echo "Logged In";
-            ?>
+              else ?>
+              <img class = "navbar-user-image" src="http://graph.facebook.com/<?php echo $user_profile['id']?>/picture"><div class = "navbar-user-name"><?php echo $user_profile['name']; ?></div>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
