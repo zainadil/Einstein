@@ -77,7 +77,7 @@
 
 
 
-      <div class = "jumbotron" id="tutor002">
+      <div class = "jumbotron master-after-first" id="tutor002">
         <div class = "active-master">
             
             <div id = "master-img">
@@ -204,7 +204,6 @@
               }
 
               addListener(i);
-
         }
 
       }
@@ -239,9 +238,6 @@
           allow_scrolling_to_div = true;
         }
       }
-
-
-
 
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>

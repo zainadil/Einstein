@@ -108,9 +108,13 @@ body {
 	display: inline-block;
 }
 
-
 #lading-page-image{
 	width: 60px;
 	height: 30px;
-	margin-top: -30px;
+	margin-bottom: 30px;
+}
+
+.master-after-first{
+	/*This Change affects the Margins - Vadim to fix this later*/
+	/*margin-top: -25px;*/
 }
