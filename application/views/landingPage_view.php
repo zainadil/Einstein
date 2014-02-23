@@ -29,7 +29,8 @@
             <?php if($login < 1) 
               echo "<a href='$login_url' class='btn btn-primary navbar-btn'>Sign in</a>";
               else { ?> 
-              <img class = "navbar-user-image" src="http://graph.facebook.com/<?php echo $user_profile['id']?>/picture"><div class = "navbar-user-name"><?php echo $user_profile['name']; ?></div>
+                <img class = "navbar-user-image" src="http://graph.facebook.com/<?php echo $user_profile['id']?>/picture">
+                <div class = "navbar-user-name"><?php echo $user_profile['name']; ?></div>
             <?php
               }
             ?>  
@@ -50,7 +51,7 @@
 
 		         <form method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
 					<div class="form-group">
-						<input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Discover & Learn "/>
+						<input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Learn how to ___"/>
                         <input type="hidden" id = "long" name="long" value='45.99'/>
                         <input type="hidden" id = "lat" name="lat" value='-70.22'/>
                         <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
@@ -71,6 +72,8 @@
         </div> <!-- /container -->
     </div> <!-- /intro-header -->
 
+
+
     <footer>
         <div class="container">
             <div class="row">
@@ -88,7 +91,7 @@
                         <li><a href="#contact">Contact</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2013. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright &copy; Einstein 2014. All Rights Reserved</p>
                 </div>
             </div>
         </div>
