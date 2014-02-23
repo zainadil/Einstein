@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <?php $this->load->view('head'); ?>
+  <?php 
+    $data['topic']= $topic;
+    $this->load->view('head', $data);
+   ?>
   
   <body>
 
