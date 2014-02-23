@@ -4,24 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <!-- Using this Style Sheet for the Einstien Font - Not sure if it flows with the complete theme - Ask Omeed for suggestions -->
-    <!-- http://designshack.net/articles/css/the-10-best-script-and-handwritten-google-web-fonts/ -->
-    <link href="http://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet" type="text/css">
+    <title>Einstein</title>
 
-    <title>Einstein - Discover and Learn</title>
-
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS - MUST COME FIRST -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/ceeko.css" rel="stylesheet">
-
   </head>
-
   <body>
 
     <!-- Fixed navbar -->
@@ -34,7 +26,6 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <!-- <img src = "images/mustache-header.png" class "navbar-btn" id = "header-img"> -->
           <a class="navbar-brand" href="../Einstien" id = "header-text">Einstein</a>
         </div>
       
@@ -55,9 +46,9 @@
           <div class="centered">
 
             <div id = "landing-page-header">
-              <!-- <img src = "images/mustache-header.png" class "navbar-btn" id = "lading-page-image">   -->
               Einstein
             </div>
+            <h4>Discover and Learn</h4>
           <br/>
           <form id="id-form-landing" class="form-signin" method="POST" action="../../Einstien/index.php/searchResults/processSearch">
             <input type="text" class="form-control input-lg search-bar" name="query" id="query" placeholder="Discover and Learn"autofocus=""></input>
