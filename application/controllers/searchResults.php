@@ -109,7 +109,14 @@ private $dictionary;
 		$lat = $this->input->post('lat');
 		$topicTemp = $this->input->post('ulearnTopic');
 
-		$topic = $this->dictionary[$topicTemp];
+		if($topicTemp != null)
+		{
+			$topic = $this->dictionary[$topicTemp];
+		}
+		else
+		{
+			redirect('../../Einstien');
+		}
 
 		// Facebook Login Check
 		$user = $this -> facebook -> getUser();

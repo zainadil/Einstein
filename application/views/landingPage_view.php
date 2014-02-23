@@ -48,7 +48,7 @@
             </div>
           <br/>
 
-		         <form action="/Search" method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
+		         <form method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
 					<div class="form-group">
 						<input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Discover & Learn "/>
                         <input type="hidden" id = "long" name="long" value='45.99'/>
@@ -189,7 +189,7 @@
             // if user did not enter a skill, then remind
             if(learnTopic == "")
             {
-              alertMessage.text("Oops! Can't really understand what you're tryin to say.").show().delay(3000).fadeOut();
+              alertMessage.text("Oops! Can't really understand what you're tryin to say, maybe e = mc^2?").show().delay(3000).fadeOut();
               return;
             }
 
@@ -209,8 +209,6 @@
                   userLatitude = latitude;
                   userLongitude = longitude;
 
-                  //console.log("latitude  : " + userLatitude + "  longitude   : " + userLongitude);
-
                   if(userLongitude == 0 && userLatitude == 0)
                   {
                     alertMessage.text("Unable to find the specified location. Please try again!").show().delay(3000).fadeOut();
@@ -220,7 +218,6 @@
                   {
                     $('#lat').val(userLatitude);
                     $('#long').val(userLongitude);
-                    //alert(learnTopic);
                     $('#ulearnTopic').val(learnTopic);
                     $('#id-form-landing').submit();
                   }
