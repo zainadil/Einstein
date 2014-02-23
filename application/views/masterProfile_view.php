@@ -11,13 +11,11 @@
 
       <div class = "jumbotron" style = "height : 900px;margin-top:60px">
         <div class = "active-master">
-            
-            <div id ="master-img" class="profile-pic">
-
                <?php
                   echo '<img src="http://localhost:8888/Einstien/images/processed/' . $endorsement['id'] . '_200.png" alt="' . $endorsement['name'] . '" class="active-master-profile-image">';
                 ?>
-            </div>
+
+                <br/>
                <table class="table table-hover">
                     <tbody>
                         <tr>
