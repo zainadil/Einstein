@@ -4,12 +4,22 @@ class masterProfile extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
+		$this->load->model('searchResults_model');
 	}
 	
 	public function index()
 	{
 
+		$endorsementPost = $this->input->post('backersCount');
+		if($endorsementPost != null)
+		{
+			// endorsement for submission, update endorsement count
+			$newValue = intval($endorsementPost) + 1;
+			$this->searchResults_model->setEndorsement(1, $newValue);
+		}
+
 		$user = $this -> facebook -> getUser();
+		$data['endorsement'] = $this->searchResults_model->getEndorsement(1);
 
 		if ($user) {
 			try {
