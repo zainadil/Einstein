@@ -6,6 +6,7 @@ class searchResults extends CI_Controller {
 private $dictionary;
 
 	function __construct() {
+
 		parent::__construct();
 		
 		$this->dictionary = array(
@@ -109,7 +110,7 @@ private $dictionary;
 	}
 
 	public function processSearch(){
-
+		
 		// Get the Search Query	
 		$searchQuery = $this->input->post('query');
 		
@@ -123,15 +124,13 @@ private $dictionary;
 			// check if the index is a defined index in our dictionary
 			// if not then redirect to home page with an error message
 			if(!array_key_exists($topicTemp,$this->dictionary))
-			{
-				redirect("../../Einstien?error=Sorry, I didn't find anything.");
-			}
+				redirect("../../Einstien?error=true");
+
 			$topic = $this->dictionary[$topicTemp];
 		}
 		else
-		{
 			redirect('../../Einstien');
-		}
+
 
 		// Facebook Login Check
 		$user = $this -> facebook -> getUser();
@@ -150,89 +149,84 @@ private $dictionary;
 			$data['login'] = 0;
 			$data['login_url'] = $this -> facebook -> getLoginUrl();
 		}
-		
-		// Send results to the results to the SearchResults View
 
-		echo "Got Here"; die();
-		// Query the database
+		// Query the database for people that fit best.
 		$this->load->model("searchResults_model");
 		$dbResults = $this->searchResults_model->getAllMastersBySkill("code");
 		
-		echo "got here"; die();
-
-
-		$curatedResults = $this->curateResults($lng, $lat, $dbResults);
+	
+		// $curatedResults = $this->curateResults($lng, $lat, $dbResults);
 		$data['results'] = $dbResults;
-		$data['results'] = $this->curateResults($long, $lat, $topic, $dbResults)
 
-		// $this->load->view("searchResults_view", $data);
+		$this->load->view("searchResults_view", $data);
 	}
 
 	public function curateResults($long, $lat, $dbResults){
 
-		echo "Hello 1"; die();
-		
-		// Sort By Location
-		// $numberOfElements = count($dbResults);
-		// $resultsLocation = array();
+		//Sort By Location
+		$numberOfElements = count($dbResults);
+		$resultsLocation = array();
 
-		// for($i = 0; $i < $numberOfElements; $i++)
-		// 	$resultsLocation[$dbResults[$i]['id']] = $this->calculateDistance($lat, $long, $dbResults[$i]['lat'], $dbResults[$i]['long']);
-			
+		for($i = 0; $i < $numberOfElements; $i++)
+			$resultsLocation[$dbResults[$i]['id']] = $this->calculateDistance($lat, $long, $dbResults[$i]['lat'], $dbResults[$i]['long']);
+
 		// usort($resultsLocation, array('searchResults', 'revCmp'));
-		// $maxRateCount = $this->getHighestReviewNumber($dbResults);
 
-		// // Sort By Reviews
-		// $resultsReviews = array();
-		// for($i = 0; $i < $numberOfElements; $i++)
-		// 	$resultsReviews[$dbResults[$i]['id']] = $this->calculateReviewsScore($dbResults[$i]['rateCount'], $dbResults[$i]['rating'], $maxRateCount);	
+		$maxRateCount = $this->getHighestReviewNumber($dbResults);
 
-		echo "Hello"; die();
+		// Sort By Reviews
+		$resultsReviews = array();
+		for($i = 0; $i < $numberOfElements; $i++)
+			$resultsReviews[$dbResults[$i]['id']] = $this->calculateReviewsScore($dbResults[$i]['rateCount'], $dbResults[$i]['rating'], $maxRateCount);	
+
+		// usort($resultsReviews, array('searchResults', 'cmp'));
+
+		// Sort by Backers
 	}
 
-	// public function revCmp($a, $b){
-	// 	if($a == $b) 
-	// 		return 0;
-	// 	return ($a < $b) ? 1 : -1;
-	// }
+	public function revCmp($a, $b){
+		if($a == $b) 
+			return 0;
+		return ($a < $b) ? 1 : -1;
+	}
 
-	// public function cmp($a, $b){
-	// 	if($a == $b) 
-	// 		return 0;
-	// 	return ($a < $b) ? 1 : -1;
-	// }
+	public function cmp($a, $b){
+		if($a == $b) 
+			return 0;
+		return ($a < $b) ? 1 : -1;
+	}
 
-	// public function calculateDistance($lat1, $lon1, $lat2, $lon2, $unit='K') 
-	// { 
-	//   $theta = $lon1 - $lon2; 
-	//   $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)); 
-	//   $dist = acos($dist); 
-	//   $dist = rad2deg($dist); 
-	//   $miles = $dist * 60 * 1.1515;
-	//   $unit = strtoupper($unit);
+	public function calculateDistance($lat1, $lon1, $lat2, $lon2, $unit='K') 
+	{ 
+	  $theta = $lon1 - $lon2; 
+	  $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)); 
+	  $dist = acos($dist); 
+	  $dist = rad2deg($dist); 
+	  $miles = $dist * 60 * 1.1515;
+	  $unit = strtoupper($unit);
 
-	//   if ($unit == "K") {
-	//     return ($miles * 1.609344); 
-	//   } else if ($unit == "N") {
-	//       return ($miles * 0.8684);
-	//     } else {
-	//         return $miles;
-	//       }
-	// }
+	  if ($unit == "K") {
+	    return ($miles * 1.609344); 
+	  } else if ($unit == "N") {
+	      return ($miles * 0.8684);
+	    } else {
+	        return $miles;
+	      }
+	}
 
-	// public function getHighestReviewNumber($dbResults){
-	// 	$count = count($dbResults);
-	// 	$max = $dbResults[0]['rateCount'];
-	// 	for($i = 1; $i < $count; $i++){
-	// 		if($dbResults[$i]['rateCount'] > $max)
-	// 			$max = $dbResults[$i]['rateCount'];
-	// 	}
-	// 	return $max;	
-	// }
+	public function getHighestReviewNumber($dbResults){
+		$count = count($dbResults);
+		$max = $dbResults[0]['rateCount'];
+		for($i = 1; $i < $count; $i++){
+			if($dbResults[$i]['rateCount'] > $max)
+				$max = $dbResults[$i]['rateCount'];
+		}
+		return $max;	
+	}
 
-	// public function calculateReviewsScore($reviews, $rating, $highest){
-	// 	 return ( 0.7 * ($rating / 5) + $reviews/$highest * 0.3 );
-	// }
+	public function calculateReviewsScore($reviews, $rating, $highest){
+		 return ( 0.7 * ($rating / 5) + $reviews/$highest * 0.3 );
+	}
 
 
 	// public function calculateBackersScore(){
