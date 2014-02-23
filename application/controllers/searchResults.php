@@ -19,29 +19,16 @@ class searchResults extends CI_Controller {
 		$searchQuery = $this->input->post('query');
 		
 		// Get the Longitude and Latiude
-		$data['lng'] = $this->input->post('long');
-		$data['lat'] = $this->input->post('lat');
-		$data['ulearnTopic'] = $this->input->post('ulearnTopic');
-		// Query the database
+		$lng = $this->input->post('long');
+		$lat = $this->input->post('lat');
+		$topic = $this->input->post('ulearnTopic');
 
-		// Process the Search Results (Curate them)
-
-		// Send results to the results to the SearchResults View
-		
-
-		//IMPORTANT - FIX UP THE CSS LINKS AND EVEYTHING ELSE IN THE VIEWS
-
+		// Facebook Login Check
 		$user = $this -> facebook -> getUser();
 
 		if ($user) {
 			try {
 				$data['user_profile'] = $this -> facebook -> api('/me');
-				// $friends = $this -> facebook -> api('/me/friends');
-				// $friends = $friends['data'];
-
-				// $jsonData = json_encode($friends);
-				// $data['user_friends'] = $jsonData;
-				
 			} catch (FacebookApiException $e) {
 				$user = null;
 			}
@@ -49,13 +36,27 @@ class searchResults extends CI_Controller {
 
 		if ($user) {
 			$data['login'] = 1;			
-			//echo ($data['user_profile']['id']); 
 		} else {
 			$data['login'] = 0;
 			$data['login_url'] = $this -> facebook -> getLoginUrl();
 		}
 		
+		// Send results to the results to the SearchResults View
+
+		// Query the database
+		$this->load->model("searchResults_model");
+		$dbResults = $this->searchResults_model->getAllMasters();
+
+		// print_r($dbResults);
+		// die();
+
+		$data['results'] = $this->curateResults($long, $lat, $topic, $dbResults)
+
 		$this->load->view("searchResults_view", $data);
+	}
+
+	public function curateResults($long, $lat, $topic, $dbResults){
+
 
 	}
 }
