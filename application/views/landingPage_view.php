@@ -50,6 +50,14 @@
             </div>
             <h4>Discover and Learn</h4>
           <br/>
+
+		         <form action="/Search" method="POST" class="form-inline" role="form">
+					<div class="form-group">
+						<input type="text" name="s" id="s" autofocus="" value="" class="form-control input-lg" placeholder="Search the catalog"/>
+					</div>
+					<input type="submit" name="doit" value="Search" class="btn btn-primary btn-lg" />
+				</form>
+
           <form id="id-form-landing" class="form-signin" method="POST" action="../../Einstien/index.php/searchResults/processSearch">
             <input type="text" class="form-control input-lg search-bar" name="query" id="query" placeholder="Discover and Learn"autofocus=""></input>
               <br/><br/>
