@@ -111,6 +111,12 @@ private $dictionary;
 
 		if($topicTemp != null)
 		{
+			// check if the index is a defined index in our dictionary
+			// if not then redirect to home page with an error message
+			if(!array_key_exists($topicTemp,$this->dictionary))
+			{
+				redirect("../../Einstien?error=Sorry, I didn't find anything.");
+			}
 			$topic = $this->dictionary[$topicTemp];
 		}
 		else
