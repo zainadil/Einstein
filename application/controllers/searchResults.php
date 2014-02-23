@@ -104,7 +104,6 @@ private $dictionary;
 	
 	public function index()
 	{
-
 		// Get some initial picture to display on the front-page
 		$this->load->view("landingPage_view");
 	}
@@ -154,18 +153,89 @@ private $dictionary;
 		
 		// Send results to the results to the SearchResults View
 
+		echo "Got Here"; die();
 		// Query the database
 		$this->load->model("searchResults_model");
-		$dbResults = $this->searchResults_model->getAllMasters();
+		$dbResults = $this->searchResults_model->getAllMastersBySkill("code");
+		
+		echo "got here"; die();
+
+
+		$curatedResults = $this->curateResults($lng, $lat, $dbResults);
 		$data['results'] = $dbResults;
-		// print_r($dbResults); die();
-		// $data['results'] = $this->curateResults($long, $lat, $topic, $dbResults)
+		$data['results'] = $this->curateResults($long, $lat, $topic, $dbResults)
 
-		$this->load->view("searchResults_view", $data);
+		// $this->load->view("searchResults_view", $data);
 	}
 
-	public function curateResults($long, $lat, $topic, $dbResults){
+	public function curateResults($long, $lat, $dbResults){
 
+		echo "Hello 1"; die();
+		
+		// Sort By Location
+		// $numberOfElements = count($dbResults);
+		// $resultsLocation = array();
 
+		// for($i = 0; $i < $numberOfElements; $i++)
+		// 	$resultsLocation[$dbResults[$i]['id']] = $this->calculateDistance($lat, $long, $dbResults[$i]['lat'], $dbResults[$i]['long']);
+			
+		// usort($resultsLocation, array('searchResults', 'revCmp'));
+		// $maxRateCount = $this->getHighestReviewNumber($dbResults);
+
+		// // Sort By Reviews
+		// $resultsReviews = array();
+		// for($i = 0; $i < $numberOfElements; $i++)
+		// 	$resultsReviews[$dbResults[$i]['id']] = $this->calculateReviewsScore($dbResults[$i]['rateCount'], $dbResults[$i]['rating'], $maxRateCount);	
+
+		echo "Hello"; die();
 	}
+
+	// public function revCmp($a, $b){
+	// 	if($a == $b) 
+	// 		return 0;
+	// 	return ($a < $b) ? 1 : -1;
+	// }
+
+	// public function cmp($a, $b){
+	// 	if($a == $b) 
+	// 		return 0;
+	// 	return ($a < $b) ? 1 : -1;
+	// }
+
+	// public function calculateDistance($lat1, $lon1, $lat2, $lon2, $unit='K') 
+	// { 
+	//   $theta = $lon1 - $lon2; 
+	//   $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)); 
+	//   $dist = acos($dist); 
+	//   $dist = rad2deg($dist); 
+	//   $miles = $dist * 60 * 1.1515;
+	//   $unit = strtoupper($unit);
+
+	//   if ($unit == "K") {
+	//     return ($miles * 1.609344); 
+	//   } else if ($unit == "N") {
+	//       return ($miles * 0.8684);
+	//     } else {
+	//         return $miles;
+	//       }
+	// }
+
+	// public function getHighestReviewNumber($dbResults){
+	// 	$count = count($dbResults);
+	// 	$max = $dbResults[0]['rateCount'];
+	// 	for($i = 1; $i < $count; $i++){
+	// 		if($dbResults[$i]['rateCount'] > $max)
+	// 			$max = $dbResults[$i]['rateCount'];
+	// 	}
+	// 	return $max;	
+	// }
+
+	// public function calculateReviewsScore($reviews, $rating, $highest){
+	// 	 return ( 0.7 * ($rating / 5) + $reviews/$highest * 0.3 );
+	// }
+
+
+	// public function calculateBackersScore(){
+
+	// }
 }
