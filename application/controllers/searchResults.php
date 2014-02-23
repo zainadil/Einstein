@@ -97,7 +97,10 @@ private $dictionary;
 			'bowling' => 'bowling',
 			'play bowling' => 'bowling',
 			'play baseball' => 'baseball',
-			'baseball' => 'baseball'
+			'baseball' => 'baseball',
+			'hack' => 'hack',
+			'to hack' => 'hack',
+			'how to hack' => 'hack'
 
 		);
 

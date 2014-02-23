@@ -9,7 +9,7 @@
     
     <div class="container">
 
-      <div class = "jumbotron" style = "height : 700px;">
+      <div class = "jumbotron" style = "height : 900px;">
         <div class = "active-master">
             
             <div id = "master-img">
@@ -24,6 +24,7 @@
             </div>
 
             <div id="endorse-button-parent">
+
               <div id="endorsementCount" data-count="<?php echo $endorsement['backers']; ?>">Endorsement: <?php echo $endorsement['backers']; ?></div>
               <div>Rating: <?php echo $endorsement['rating']; ?></div>
 
@@ -40,6 +41,15 @@
 
             </div>
         </div>
+
+        <br /> <br />
+          <p style="font-size:30px; font-weight:100; line-height:1.25; letter-spacing:2px; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75), 0 3px 10px rgba(0,0,0,0.45)">
+            To be Engineer, Musician, Guitarist, Tech Curious, Hacker, Tea Drinker, Sports lover. 
+            Lorem Ipsum is Lorem ipsum, it is no more than lorem ipsum. No matter how much you try to make sense out of it, it 
+            can't be helped. It is after all the famous lorem ipsum.
+          </p>
+        <br />
+
         <h2> Location </h2>
         <div id="map-canvas" class = "img-thumbnail" style = " height : 200px; width : 80%;">
 
