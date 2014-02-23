@@ -6,7 +6,7 @@
     
         <?php 
             if (strcmp(basename($this->router->fetch_class()), 'searchResults') == 0) {
-                echo "<title>Einstein // (CORE SEARCH TERM)</title>";
+                echo "<title>Einstein // ".ucfirst($topic)."</title>";
             }
             else {
                 echo "<title>Einstein</title>";

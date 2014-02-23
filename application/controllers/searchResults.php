@@ -127,6 +127,7 @@ private $dictionary;
 				redirect("../../Einstien?error=true");
 
 			$topic = $this->dictionary[$topicTemp];
+			$data['topic'] = $topic;
 		}
 		else
 			redirect('../../Einstien');
