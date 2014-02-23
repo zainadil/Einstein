@@ -85,6 +85,9 @@
           // submit using jquery post
           e.preventDefault();
 
+          //var regex = /learn ?| ?how ?| ?to ?| ?play ?| ?ride?| a ?/
+          var regex = /learn to ?|learn ?| ?how to ?| ?how ?| to | ?play a ?| ?ride a ?| a ?/
+
           var searchQuery = ($('#query').val()).toLowerCase();
           var modifiedQuery = "";
           var searchLocation = "";
@@ -118,7 +121,9 @@
               // we found near in the query
               searchLocation = (searchQuery.split("near"))[1];
               modifiedQuery = (searchQuery.split(" near"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              //learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              modifiedQuery2 = modifiedQuery.split(regex);
+              learnTopic = modifiedQuery2[modifiedQuery2.length - 1];
               locationFound = true;
             }
             else if (indexAround > 1) 
@@ -126,14 +131,18 @@
               // keyword around is found in query
               searchLocation = (searchQuery.split("around"))[1];
               modifiedQuery = (searchQuery.split(" around"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              //learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              modifiedQuery2 = modifiedQuery.split(regex);
+              learnTopic = modifiedQuery2[modifiedQuery2.length - 1];
               locationFound = true;
             }
             else if(indexBy > 1)
             {
               searchLocation = (searchQuery.split("by"))[1];
               modifiedQuery = (searchQuery.split(" by"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              //learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              modifiedQuery2 = modifiedQuery.split(regex);
+              learnTopic = modifiedQuery2[modifiedQuery2.length - 1];
               locationFound = true;
             }
             else
@@ -141,7 +150,10 @@
               searchLocation = "navigator";
               locationFound = false;
               modifiedQuery = searchQuery;
-              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : "";
+              //learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : "";
+              modifiedQuery2 = modifiedQuery.split(regex);
+              learnTopic = modifiedQuery2[modifiedQuery2.length - 1];
+              console.log(learnTopic);
             }
 
             // if user did not enter a skill, then remind
