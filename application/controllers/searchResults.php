@@ -192,7 +192,7 @@ private $dictionary;
 
 		// Query the database for people that fit best.
 		$this->load->model("searchResults_model");
-		$dbResults = $this->searchResults_model->getAllMastersBySkill("code");
+		$dbResults = $this->searchResults_model->getAllMastersBySkill($data['topic']);
 		
 	
 		$curatedResults = $this->curateResults($lng, $lat, $dbResults);
