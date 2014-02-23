@@ -139,9 +139,11 @@ private $dictionary;
 		// Send results to the results to the SearchResults View
 
 		// Query the database
-		//$this->load->model("searchResults_model");
-		//$dbResults = $this->searchResults_model->getAllMasters();
-		//$data['results'] = $this->curateResults($long, $lat, $topic, $dbResults)
+		$this->load->model("searchResults_model");
+		$dbResults = $this->searchResults_model->getAllMasters();
+		$data['results'] = $dbResults;
+		// print_r($dbResults); die();
+		// $data['results'] = $this->curateResults($long, $lat, $topic, $dbResults)
 
 		$this->load->view("searchResults_view", $data);
 	}
