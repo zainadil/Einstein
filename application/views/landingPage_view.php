@@ -48,27 +48,19 @@
             <div id = "landing-page-header">
               Einstein
             </div>
-            <h4>Discover and Learn</h4>
+            <h4>Discover & Learn</h4>
           <br/>
 
-		         <form action="/Search" method="POST" class="form-inline" role="form">
+		         <form action="/Search" method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
 					<div class="form-group">
-						<input type="text" name="s" id="s" autofocus="" value="" class="form-control input-lg" placeholder="Search the catalog"/>
+						<input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Discover & Learn "/>
+                        <input type="hidden" id = "long" name="long" value='45.99'/>
+                        <input type="hidden" id = "lat" name="lat" value='-70.22'/>
+                        <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
 					</div>
-					<input type="submit" name="doit" value="Search" class="btn btn-primary btn-lg" />
+					<input type="submit" name="loginButton" value="Search" class="btn btn-primary btn-lg" id="submit-button"/>
 				</form>
-
-          <form id="id-form-landing" class="form-signin" method="POST" action="../../Einstien/index.php/searchResults/processSearch">
-            <input type="text" class="form-control input-lg search-bar" name="query" id="query" placeholder="Discover and Learn"autofocus=""></input>
-              <br/><br/>
-              <input type="hidden" id = "long" name="long" value='45.99'/>
-              <input type="hidden" id = "lat" name="lat" value='-70.22'/>
-              <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
-             <button class="btn btn-default" type="button" name="loginButton" value="Login" id="submit-button">Search</button>
-            </form>
-
-            <br />
-            <div class="alert alert-danger" id="alert-message" style="display:none;max-width:800px;margin:auto">Error!</div>
+                <div class="alert alert-danger" id="alert-message" style="display:none;max-width:800px;margin:auto">Error!</div>
 
            </div> 
     </div> <!-- /container -->
