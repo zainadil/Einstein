@@ -127,7 +127,7 @@
           // submit using jquery post
           e.preventDefault();
 
-          var searchQuery = $('#query').val();
+          var searchQuery = ($('#query').val()).toLowerCase();
           var modifiedQuery = "";
           var searchLocation = "";
           var learnTopic = "";
