@@ -29,16 +29,9 @@
 
       ?>
           <div class = "active-master">
-              
               <div id = "master-img">
                 <?php
                   echo '<img src="../../images/processed/' . $row['id'] . '_200.png" alt="' . $row['name'] . '" class="active-master-image">';
-                ?>
-              </div>
-              
-              <div id = "master-details">
-                <?php
-                   // echo '<div class = "active-master-name" >' . $row['name'] . '</div> <div id="' . $row['id'] . '"></div>';
                 ?>
               </div>
           </div>
@@ -46,12 +39,27 @@
           <?php
               echo '<div class="jumbotron2" id="master' . $id_num . '-extended" style="display:none;">';
           ?>
-
-            <div>Name: <?php echo $row['name']; ?></div>
-            <div>Endorsement: <?php echo $row['backers']; ?></div>
-            <div>Rating: <?php echo $row['rating']; ?></div>
-            <div>Distance: <?php echo $row['dist']; ?></div>
-            <a href = "../../../Einstien/index.php/masterProfile?id=<?php echo $row['id']; ?>" class="btn btn-default">More  <span class="ion-chevron-right"></span></a>
+               <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th><?php echo $row['name']; ?></th>
+                        </tr>
+                        <tr>
+                            <td>Rating</td>
+                            <td><?php echo $row['rating']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Endorsement(s)</td>
+                            <td><?php echo $row['backers']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Distance</td>
+                            <td><?php echo $row['dist']; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href = "../../../Einstien/index.php/masterProfile?id=<?php echo $row['id']; ?>" class="btn btn-default btn-lg">More  <span class="ion-chevron-right"></span></a>
 
           </div>
         </div>
