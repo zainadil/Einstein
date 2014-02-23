@@ -152,7 +152,7 @@ private $dictionary;
 		$lng = $this->input->post('long');
 		$lat = $this->input->post('lat');
 		$topicTemp = $this->input->post('ulearnTopic');
-		$searchLocation = $this->input->post('searchLocation');
+		$searchLocation = ucwords($this->input->post('searchLocation'));
 
 		$data['long'] = $lng;
 		$data['lat'] = $lat;
