@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     
+
        <?php
         // TODO 
         if (strcmp(basename(__FILE__), 'searchResults_view.php') == 0) {
@@ -15,8 +16,8 @@
        ?> 
 
     <!-- Bootstrap core CSS - MUST COME FIRST -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8888/Einstien/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/ceeko.css" rel="stylesheet">
+    <link href="http://localhost:8888/Einstien/css/ceeko.css" rel="stylesheet">
   </head>

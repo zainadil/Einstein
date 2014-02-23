@@ -70,12 +70,13 @@
             </div>
 
             <div id="endorse-button-parent">
+              <div id="endorsementCount" data-count="<?php echo $endorsement['backers']; ?>">Endorsement: <?php echo $endorsement['backers']; ?></div>
+              <div>Rating: <?php echo $endorsement['rating']; ?></div>
 
-              <div id="endorsementCount" data-count="0">Endorsement: 0</div>
-
-              <form method="POST" class="form-inline" role="form" id="id-form-endorse" action="../../Einstien/index.php/masterProfile/">
+              <form method="POST" class="form-inline" role="form" id="id-form-endorse" action="../../Einstien/index.php/masterProfile">
                 <div class="form-group">
                     <input type="hidden" id="loggedInStatus" name="loggedInStatus" value="<?php echo $login >= 1 ? 1 : 0; ?>" />
+                    <input type="hidden" id="backersCount" name="backersCount" value="<?php echo $endorsement['backers']; ?>" />
                 </div>
                 <input type="submit" name="endorseButton" value="Endorse" class="btn btn-primary btn-lg" id="endorse-button"/>
               </form> 
@@ -160,6 +161,8 @@
           return;
         }
 
+
+        $('#id-form-endorse').submit();
 
       });
     </script>
