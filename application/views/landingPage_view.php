@@ -16,7 +16,7 @@
 
 		            <form method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
 					    <div class="form-group">
-						    <input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Learn how to ____"/>
+						    <input type="text" name="query" id="query" autofocus="" value="" class="form-control search-bar" placeholder="Learn how to ____"/>
                             <input type="hidden" id = "long" name="long" value='45.99'/>
                             <input type="hidden" id = "lat" name="lat" value='-70.22'/>
                             <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
