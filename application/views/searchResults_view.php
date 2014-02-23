@@ -62,60 +62,54 @@
        <!-- Main component for a primary marketing message or call to action -->
          <div id="map-canvas" class = "img-thumbnail" style = " height : 500px; width : 100%;"></div>
 
+      <!-- php this one -->
+    <?php
+    $temp_i = 1;
 
+    foreach($results as $row)
+    {
+      $id_num = '000' . $temp_i;
+      $id_num = substr($id_num, -3, 3);
+      
+      echo '<div class = "jumbotron master-after-first" id="master' . $id_num . '" onclick="expand_selected_master(this.id)">';
 
-<!-- This SHOULD BE IN A LOOP FOR THE DATA -->
+      ?>
+          <div class = "active-master">
+              
+              <div id = "master-img">
+                <?php
+                  echo '<img src="../../images/processed/' . $row['id'] . '_200.png" alt="' . $row['name'] . '" class="active-master-image">';
+                ?>
+              </div>
+              
+              <div id = "master-details">
+                <?php
+                    echo '<div class = "active-master-name" >' . $row['name'] . '</div> <div id="' . $row['id'] . '"></div>';
+                ?>
+              </div>
+          </div>
 
-<!-- ZAIN -->
-      <div class = "jumbotron" id="master001" onclick="expand_selected_master(this.id)">
-        <div class = "active-master">
-            
-            <div id = "master-img">
-              <img src="../../images/zainlarge.png" alt="Zain Adil" class="active-master-image">
-            </div>
-            
-            <div id = "master-details">
-              <div class = "active-master-name" > Zain Adil</div> <div id="zainadil"></div>
-            </div>
+          <div id = "master-details-page">
+            <a href = "../../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
+          </div>
+
+          <?php
+              echo '<div class="jumbotron2" id="master' . $id_num . '-extended" style="display:none;">';
+          ?>
+
+            <p>abcd</p>
+            <p>abcd</p>
+            <p>abcd</p>
+          </div>
         </div>
 
-        <div id = "master-details-page">
-          <a href = "../../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
-        </div>
+      <?php
 
-        <div class="jumbotron2" id="master001-extended" style="display:none;">
-          <p>abcd</p>
-          <p>abcd</p>
-          <p>abcd</p>
-           <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://google.ca" data-via="Einstien" data-lang="en" data-text = "Checkout Joh Doe, He's giving guitar Lessons" data-hashtags = "GuitarLessons" data-related="anywhereTheJavascriptAPI" data-count="vertical">Tweet</a>
-        </div>
+      $temp_i++;
+    }
+    ?>
 
-      </div>
 
-<!-- NIDALE -->
-      <div class = "jumbotron master-after-first" id="master002" onclick="expand_selected_master(this.id)">
-        <div class = "active-master">
-            
-            <div id = "master-img">
-              <img src="../../images/nidalelarge.png" alt="Nidale Hajjar" class="active-master-image">
-            </div>
-            
-            <div id = "master-details">
-              <div class = "active-master-name" > Nidale Hajjar</div> <div id="nidalehajjar"></div>
-            </div>
-        </div>
-
-        <div id = "master-details-page">
-          <a href = "../../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
-        </div>
-
-        <div class="jumbotron2" id="master002-extended" style="display:none;">
-          <p>abcd</p>
-          <p>abcd</p>
-          <p>abcd</p>
-        </div>
-
-    </div>
 
 
 
@@ -177,60 +171,94 @@
     </script>
     <script type="text/javascript">
 
-
-
-
     //GLOBAL VARIABLES
     var allow_scrolling_to_div = true;
 
       function initialize() {
         var mapOptions = {
           scrollwheel: false,
-          center: new google.maps.LatLng(39.241116, -94.51759),
+          center: new google.maps.LatLng(45.553848,-73.596237),
           zoom: 12 // Load this value based on the search result
         };
+
         var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
-
-        // Load this from an XML/JSON File that's sent from the controller
-        var business_locations = 
-        [
-            ['Vadim Stark',     '../../images/vadim.png', 39.208518, -94.512635, "master004"],
-            ['You', '../../images/zain.png', 39.241116, -94.51759, "master001"],
-            ['Nidale Hajjar', '../../images/nidale.png', 39.246116, -94.57759, "master002"],
-            ['Mehsum Mansoor', '../../images/mehsum.png', 39.246472, -94.443878, "master003"]
-        ];
-
-
         var markers = [];
         var master_ids = [];
 
-        for(var i = 0; i < business_locations.length; i++)
+
+       <?php
+       $i = 0;
+        foreach($results as $row)
         {
 
-              var image = business_locations[i][1];
-              var id_of_master = business_locations[i][4];
+          echo 'var name = "' . $row['name'] . '";';
+          echo 'var image = "../../images/processed/' . $row['id'] . '_circle.png";';
 
-              marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(business_locations[i][2], business_locations[i][3]),
+          $i++;
+          $id_num = '000' . $i;
+          $id_num = substr($id_num, -3, 3);
+          $i--;
+
+          $master_id = "master" . $id_num;
+          echo 'var id_of_master = "' . $master_id . '";';
+
+          echo 'var latitude = ' . $row['lat'] . ';';
+          echo 'var longitude = ' . $row['long'] . ';';
+
+          echo 'var i = ' . $i . ';';
+
+          ?>
+
+                    var imagex = {
+                      url: image,
+                      origin: new google.maps.Point(0,0), //origin is where the picture starts getting drawn, so 0,0 == draw the whole picture
+                      anchor: new google.maps.Point(50,50),//offset_avatar_middlepoint,offset_avatar_middlepoint),//anchor is the middle point for drawing the marker
+                      // scaledSize: new google.maps.Size(desired_avatar_width,desired_avatar_height)
+
+                      <?php
+                      if ($i == 0)
+                      {
+                        echo 'scaledSize: new google.maps.Size(120,120)';
+                      }
+                      else if ($i == 1)
+                      {
+                        echo 'scaledSize: new google.maps.Size(90,90)';
+                      }
+                      else
+                      {
+                        echo 'scaledSize: new google.maps.Size(60,60)';
+                      }
+
+                      ?>
+
+                    };
+
+
+                    marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(latitude, longitude),
                     map: map,
-                    icon: image,
-                    title: business_locations[i][0],
-                });
+                    icon: imagex,
+                    title: "hi"
+                    });
 
-              markers.push(marker);
-              master_ids.push(id_of_master);
+                    markers.push(marker);
+                    master_ids.push(id_of_master);
 
-              var addListener = function (i) {
-              google.maps.event.addListener(marker, 'click', function(){
-                  // infoWindows[i].open(map, positions[i]);
-                  // alert(id_of_tutor);                 
-                  // alert(master_ids[i]);
-                  scroll_to_master(master_ids[i]);                 
-              });
+                    var addListener = function (i) {
+                    google.maps.event.addListener(marker, 'click', function(){
+                    scroll_to_master(master_ids[i]);                 
+               });
               }
 
               addListener(i);
+
+          <?php          
+
+            $i++;
         }
+        ?>
+
+
 
       }
 

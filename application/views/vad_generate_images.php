@@ -14,9 +14,37 @@
 // $targetFileIcon = "../../images/unprocessed/nidale_unprocessed.jpg";
 // $targetFileIcon = '../../images/nidalelarge.png';
 
-$url_concat_name = 'nidale';
+
+
+// $url_concat_name = 'nidale';
+
+
+
+// $url_concat_name = 'HermanSinghBadwal';
+// $url_concat_name = 'KhadyLoSeck';
+// $url_concat_name = 'ManjeetKaur';
+// $url_concat_name = 'MdZahedHossain';
+// $url_concat_name = 'MehsumMansoorNaqvi';
+// $url_concat_name = 'NatalySheinin';
+// $url_concat_name = 'NidaleHajjar';
+// $url_concat_name = 'OmeedSafeeRad';
+// $url_concat_name = 'VadimStark';
+// $url_concat_name = 'WillSmith';
+// $url_concat_name = 'ZainAdil';
+
+
+
+
+
+
+
+
+
+
 // $targetFileIcon = 'http://localhost/Einstien/images/unprocessed/' . $url_concat_name . '_unprocessed.jpg';
-$targetFileIcon = 'images/unprocessed/' . $url_concat_name . '_unprocessed.jpg';
+// $targetFileIcon = 'images/unprocessed/' . $url_concat_name . '_unprocessed.jpg';
+$targetFileIcon = 'images/unprocessed/' . $url_concat_name . '.jpg';
+
 // $destinationFile = 'http://localhost/Einstien/images/processed' . $url_concat_name . '.png';
 
 // $targetFileIcon = "nidale.jpg";
