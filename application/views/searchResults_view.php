@@ -60,7 +60,7 @@
                     </tbody>
                 </table>
                 <a href = "../../../Einstien/index.php/masterProfile?id=<?php echo $row['id']; ?>" class="btn btn-default btn-lg">More  <span class="ion-chevron-right"></span></a>
-
+                <br/>
           </div>
         </div>
 

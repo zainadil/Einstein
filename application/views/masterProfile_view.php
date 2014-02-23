@@ -12,22 +12,33 @@
       <div class = "jumbotron" style = "height : 900px;margin-top:60px">
         <div class = "active-master">
             
-            <div id = "master-img">
+            <div id ="master-img" class="profile-pic">
 
                <?php
                   echo '<img src="http://localhost:8888/Einstien/images/processed/' . $endorsement['id'] . '_200.png" alt="' . $endorsement['name'] . '" class="active-master-profile-image">';
                 ?>
             </div>
-            
-            <div id = "master-profile-details">
-              <div class = "active-master-profile-name" > <?php echo $endorsement['name']; ?> </div> <div id="star"></div>
-            </div>
+               <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th><?php echo $endorsement['name']; ?></th>
+                        </tr>
+                        <tr>
+                            <td>Rating</td>
+                            <td><?php echo $endorsement['rating']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Endorsement(s)</td>
+                            <td><?php echo $endorsement['backers']; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+          <p><?php echo $endorsement['detail']; ?></p>
+        <br />
 
             <div id="endorse-button-parent">
-
-              <div id="endorsementCount" data-count="<?php echo $endorsement['backers']; ?>">Endorsement: <?php echo $endorsement['backers']; ?></div>
-              <div>Rating: <?php echo $endorsement['rating']; ?></div>
-
               <form method="POST" class="form-inline" role="form" id="id-form-endorse" action="../../Einstien/index.php/masterProfile?id=<?php echo $endorsement['id']; ?>">
                 <div class="form-group">
                     <input type="hidden" id="loggedInStatus" name="loggedInStatus" value="<?php echo $login >= 1 ? 1 : 0; ?>" />
@@ -35,21 +46,15 @@
                     <input type="hidden" id="userid" name="userid" value="<?php echo $endorsement['id']; ?>" />
                 </div>
                 <input type="submit" name="endorseButton" value="Endorse" class="btn btn-primary btn-lg" id="endorse-button"/>
+                <input type="submit" value="Contact" class="btn btn-primary btn-lg"/>
                 <div id="warning-login" style="display:none">You must be logged in to endorse!</div>
               </form> 
-
-
             </div>
-        </div>
+        
+            <br/>
 
-        <br /> <br />
-          <p style="font-size:30px; font-weight:100; line-height:1.25; letter-spacing:2px; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75), 0 3px 10px rgba(0,0,0,0.45)">
-            <?php echo $endorsement['detail']; ?>
-          </p>
-        <br />
-
-        <h2> Location </h2>
-        <div id="map-canvas" class = "img-thumbnail" style = " height : 200px; width : 80%;">
+        <h2>Location</h2>
+        <div id="map-canvas" class = "img-thumbnail" style = "height : 200px; width : 80%;">
 
         </div>
         <br/>
