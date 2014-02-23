@@ -11,9 +11,10 @@
     <?php $this->load->view('navbar'); ?>
     
     <div class="container">
-
-       <!-- Main component for a primary marketing message or call to action -->
-         <div id="map-canvas" class = "img-thumbnail" style = " height : 500px; width : 100%;"></div>
+        <br/>
+        <br/>
+        <?php echo "<h1>Results for ".ucfirst($topic)."</h1>";?>
+        <div id="map-canvas" class = "img-thumbnail" style = "height : 500px; width : 100%;"></div>
 
       <!-- php this one -->
     <?php
