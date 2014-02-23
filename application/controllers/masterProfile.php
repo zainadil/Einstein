@@ -13,13 +13,20 @@ class masterProfile extends CI_Controller {
 		$endorsementPost = $this->input->post('backersCount');
 		if($endorsementPost != null)
 		{
+			$id = $this->input->post('userid');
 			// endorsement for submission, update endorsement count
 			$newValue = intval($endorsementPost) + 1;
-			$this->searchResults_model->setEndorsement(1, $newValue);
+			$this->searchResults_model->setEndorsement($id, $newValue);
+		}
+
+		if($this->input->get('id') == null)
+		{
+			redirect('../../Einstien');
 		}
 
 		$user = $this -> facebook -> getUser();
-		$data['endorsement'] = $this->searchResults_model->getEndorsement(1);
+		$id = $this->input->get('id') ? $this->input->get('id') : $this->input->post('userid');
+		$data['endorsement'] = $this->searchResults_model->getEndorsement($id);
 
 		if ($user) {
 			try {

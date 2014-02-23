@@ -7,19 +7,19 @@ class searchResults_model extends CI_Model {
 		$this->load->database();
 	}
 
-	function getEndorsement($uid)
+	function getEndorsement($id)
 	{
-		$q = $this->db->get_where('masters', array('uid' => $uid));
+		$q = $this->db->get_where('masters', array('id' => $id));
 		return $q->row_array();
 	}
 
-	function setEndorsement($uid, $newEndorsement)
+	function setEndorsement($id, $newEndorsement)
 	{
 		$data = array(
                'backers' => $newEndorsement
          	);
 		
-		$this->db->where('uid', $uid);
+		$this->db->where('id', $id);
 		$this->db->update('masters', $data); 
 		return;
 

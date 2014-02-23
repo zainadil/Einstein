@@ -62,21 +62,25 @@
         <div class = "active-master">
             
             <div id = "master-img">
-              <img src="../images/zainlarge.png" alt="Zain Adil" class="active-master-profile-image">
+
+               <?php
+                  echo '<img src="http://localhost:8888/Einstien/images/processed/' . $endorsement['id'] . '_200.png" alt="' . $endorsement['name'] . '" class="active-master-profile-image">';
+                ?>
             </div>
             
             <div id = "master-profile-details">
-              <div class = "active-master-profile-name" > Zain Adil </div> <div id="star"></div>
+              <div class = "active-master-profile-name" > <?php echo $endorsement['name']; ?> </div> <div id="star"></div>
             </div>
 
             <div id="endorse-button-parent">
               <div id="endorsementCount" data-count="<?php echo $endorsement['backers']; ?>">Endorsement: <?php echo $endorsement['backers']; ?></div>
               <div>Rating: <?php echo $endorsement['rating']; ?></div>
 
-              <form method="POST" class="form-inline" role="form" id="id-form-endorse" action="../../Einstien/index.php/masterProfile">
+              <form method="POST" class="form-inline" role="form" id="id-form-endorse" action="../../Einstien/index.php/masterProfile?id=<?php echo $endorsement['id']; ?>">
                 <div class="form-group">
                     <input type="hidden" id="loggedInStatus" name="loggedInStatus" value="<?php echo $login >= 1 ? 1 : 0; ?>" />
                     <input type="hidden" id="backersCount" name="backersCount" value="<?php echo $endorsement['backers']; ?>" />
+                    <input type="hidden" id="userid" name="userid" value="<?php echo $endorsement['id']; ?>" />
                 </div>
                 <input type="submit" name="endorseButton" value="Endorse" class="btn btn-primary btn-lg" id="endorse-button"/>
               </form> 
