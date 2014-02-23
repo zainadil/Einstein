@@ -57,8 +57,16 @@
 					</div>
 					<input type="submit" name="loginButton" value="Search" class="btn btn-primary btn-lg" id="submit-button"/>
 				</form>
+          <br />
                 <div class="alert alert-danger" id="alert-message" style="display:none;max-width:800px;margin:auto">Error!</div>
-
+                <?php
+              if(strcmp($error, "") != 0)
+              {
+              ?>
+                <div class="alert alert-danger" id="error-query" style="max-width:800px;margin:auto"><?php echo $error; ?></div>
+              <?php 
+              } 
+              ?>
            </div> 
         </div> <!-- /container -->
     </div> <!-- /intro-header -->
@@ -98,8 +106,10 @@
 
     <script type="text/javascript">
 
+      // if the error is shown then hide it
+      $('#error-query').delay(4000).fadeOut();
 
-      
+      /*
       var availableAutosuggestions = [
         "Learn how to",
         "Learn",
@@ -113,7 +123,7 @@
         source : availableAutosuggestions
 
       });
-      
+      */
 
     // Script that gets the Location and then forwards it to the backend.
 
