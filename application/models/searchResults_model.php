@@ -36,6 +36,18 @@ class searchResults_model extends CI_Model {
 		return $this->ObjectToArray($data);
 	}
 
+
+	function getAllMastersBySkill($skill) {
+		
+		$q = $this->db->query("SELECT * FROM masters WHERE skill = '" . $skill . "'");
+		if ($q->num_rows > 0) {
+			foreach ($q->result() as $row) {
+				$data[] = $row;
+			}
+		}
+		return $this->ObjectToArray($data);
+	}
+
 	function ObjectToArray($Array){
 		for($i = 0; $i < count($Array); $i++){
 			$Array[$i] = get_object_vars($Array[$i]);
