@@ -25,7 +25,7 @@
 
             <div id="endorse-button-parent">
 
-              <div id="endorsementCount" data-count="<?php echo $endorsement['backers']; ?>">Endorsement: <?php echo $endorsement['backers']; ?></div>
+              <div id="endorsementCount" data-count="<?php echo $endorsement['backers']; ?>">Endorsements: <?php echo $endorsement['backers']; ?></div>
               <div>Rating: <?php echo $endorsement['rating']; ?></div>
 
               <form method="POST" class="form-inline" role="form" id="id-form-endorse" action="../../Einstien/index.php/masterProfile?id=<?php echo $endorsement['id']; ?>">
@@ -53,7 +53,7 @@
 
         </div>
         <br/>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://google.ca" data-via="Einstien" data-lang="en" data-text = "<?php ?>Checkout Joh Doe, He's giving guitar Lessons" data-hashtags = "GuitarLessons" data-related="anywhereTheJavascriptAPI" data-count="vertical">Tweet</a>  
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://google.ca" data-via="Einstien" data-lang="en" data-text = "Checkout Joh Doe, He's giving guitar Lessons" data-hashtags = "GuitarLessons" data-related="anywhereTheJavascriptAPI" data-count="vertical">Tweet</a>  
          
     </div> <!-- /container -->
 
@@ -82,7 +82,7 @@
         // Load this from an XML/JSON File that's sent from the controller
         var business_locations = 
             [
-                ['You', '../images/zain.png', 39.241116, -94.51759]
+                ['You', '../images/zain.png', <?php ?>39.241116, -94.51759]
             ];
 
         for(var i = 0; i < business_locations.length; i++)
