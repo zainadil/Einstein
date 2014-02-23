@@ -13,7 +13,7 @@
     <div class="container">
         <br/>
         <br/>
-        <?php echo "<h1>Results for ".ucfirst($topic)."</h1>";?>
+        <?php echo "<h1>Results for ".ucfirst($topic)." near ".$searchLocation."</h1>";?>
         <div id="map-canvas" class = "img-thumbnail" style = "height : 500px; width : 100%;"></div>
 
       <!-- php this one -->
@@ -54,6 +54,7 @@
             <div>Name: <?php echo $row['name']; ?></div>
             <div>Endorsement: <?php echo $row['backers']; ?></div>
             <div>Rating: <?php echo $row['rating']; ?></div>
+            <div>Distance: <?php echo $row['dist']; ?></div>
 
           </div>
         </div>
@@ -82,7 +83,7 @@
       function initialize() {
         var mapOptions = {
           scrollwheel: false,
-          center: new google.maps.LatLng(45.553848,-73.596237),
+          center: new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $long?>),
           zoom: 12 // Load this value based on the search result
         };
 
@@ -90,6 +91,13 @@
         var markers = [];
         var master_ids = [];
 
+        myMarker = new google.maps.Marker({
+                    position: new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $long?>),
+                    map: map,
+                    title: "You"
+                });
+
+        markers.push(myMarker);
 
        <?php
        $i = 0;
@@ -143,7 +151,7 @@
                     position: new google.maps.LatLng(latitude, longitude),
                     map: map,
                     icon: imagex,
-                    title: "hi"
+                    title: "<?php echo $row['name'];?>"
                     });
 
                     markers.push(marker);
