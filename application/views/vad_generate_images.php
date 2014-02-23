@@ -26,6 +26,54 @@ $targetFileIcon = 'images/unprocessed/' . $url_concat_name . '_unprocessed.jpg';
 // ../../images/unprocessed/nidale_200.png
 // ../../images/unprocessed/nidale_circle.png
 
+
+
+
+//connect to db
+
+
+// $con=mysqli_connect("127.0.0.1:8888","root","","einstein_local");
+// $con=mysqli_connect("127.0.0.1:8888","einstein_local","","root");
+
+
+//         $my_query = "SELECT * FROM OWING";
+
+//     echo $my_query;
+
+
+
+// $this->db = $this->load->database();
+
+// $this->load->database();
+// $query = $this->db->query('SELECT * FROM owing');//name, title, email FROM my_table');
+
+// foreach ($query->result() as $row)
+// {
+//     echo $row->title;
+//     echo $row->name;
+//     echo $row->email;
+// }
+
+// echo 'Total Results: ' . $query->num_rows();
+// $this->db->select('names, age');
+// // $query = $this->db->get_where('people', array('age' => '>' . $someAge));
+
+// $q = $this->db->query("SELECT * FROM OWING");//SUM(value) as sum FROM Owing WHERE id_from = '" . $uid . "'");
+//         if ($q->num_rows > 0) {
+//             foreach ($q->result() as $row) {
+//                 $data[] = $row;
+//                 echo $data[0];
+//             }
+//         }
+        // return $this->ObjectToArray($data);
+
+
+
+
+
+
+
+
 //2) load the image
 $im = loadImage($targetFileIcon);
 //3) make it square

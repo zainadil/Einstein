@@ -2,8 +2,94 @@
 
 class searchResults extends CI_Controller {
 
+
+private $dictionary;
+
 	function __construct() {
 		parent::__construct();
+		
+		$this->dictionary = array(
+			
+			'bake cake' => 'bake',
+			'bake a cake' => 'bake',
+			'bake cookie' => 'bake',
+			'bake a cookie' => 'bake',
+			'bake cookies' => 'bake',
+			'bake' => 'bake',
+			'to cook' => 'cook',
+			'cook' => 'cook',
+			'cook rice' => 'cook',
+			'cook potato' => 'cook',
+			'play guitar' => 'guitar',
+			'guitar' => 'guitar',
+			'playing guitar' => 'guitar',
+			'drive' => 'drive',
+			'driving' => 'drive',
+			'dance' => 'dance',
+			'dancing' => 'dance',
+			'to dance' => 'dance',
+			'code' => 'code',
+			'to code' => 'code',
+			'coding' => 'code',
+			'singing' => 'sing',
+			'sing' => 'sing',
+			'to sing' => 'sing',
+			'to dance' => 'dance',
+			'to code' => 'code',
+			'to bake' => 'bake',
+			'skii' => 'skii',
+			'play pool' => 'pool',
+			'pool' => 'pool',
+			'play billiard' => 'billiard',
+			'billiard' => 'billiard',
+			'play basketball' => 'basketball',
+			'basketball' => 'basketball',
+			'soccer' => 'soccer',
+			'play soccer' => 'soccer',
+			'play ping pong' => 'ping pong',
+			'ping pong' => 'ping pong',
+			'play table tennis' => 'table tennis',
+			'table tennis' => 'table tennis',
+			'play hockey' => 'hockey',
+			'hockey' => 'hockey',
+			'play football' => 'football',
+			'football' => 'football',
+			'wrestle' => 'wrestle',
+			'karate' => 'karate',
+			'drive bike' => 'bike',
+			'to drive a bike' => 'bike',
+			'to ride a bike' => 'bike',
+			'ride bike' => 'bike',
+			'ride a bike' => 'bike',
+			'bike' => 'bike',
+			'drive a motorcycle' => 'bike',
+			'drive motorcycle' => 'bike',
+			'to motorbike' => 'bike',
+			'to motor bike' => 'bike',
+			'drive a car' => 'car',
+			'drive car' => 'car',
+			'play piano' => 'piano',
+			'piano' => 'piano',
+			'to play drum' => 'drum',
+			'play drum' => 'drum',
+			'drum' => 'drum',
+			'to play violin' => 'violin',
+			'play violin' => 'violin',
+			'violin' => 'violin',
+			'bass' => 'bass',
+			'bass guitar' => 'bass',
+			'to play bass guitar' => 'bass',
+			'play bass guitar' => 'bass',
+			'trumpet' => 'trumpet',
+			'play trumpet' => 'trumpet',
+			'to bowl' => 'bowling',
+			'bowling' => 'bowling',
+			'play bowling' => 'bowling',
+			'play baseball' => 'baseball',
+			'baseball' => 'baseball'
+
+		);
+
 	}
 	
 	public function index()
@@ -21,7 +107,16 @@ class searchResults extends CI_Controller {
 		// Get the Longitude and Latiude
 		$lng = $this->input->post('long');
 		$lat = $this->input->post('lat');
-		$topic = $this->input->post('ulearnTopic');
+		$topicTemp = $this->input->post('ulearnTopic');
+
+		if($topicTemp != null)
+		{
+			$topic = $this->dictionary[$topicTemp];
+		}
+		else
+		{
+			redirect('../../Einstien');
+		}
 
 		// Facebook Login Check
 		$user = $this -> facebook -> getUser();
@@ -44,13 +139,9 @@ class searchResults extends CI_Controller {
 		// Send results to the results to the SearchResults View
 
 		// Query the database
-		$this->load->model("searchResults_model");
-		$dbResults = $this->searchResults_model->getAllMasters();
-
-		// print_r($dbResults);
-		// die();
-
-		$data['results'] = $this->curateResults($long, $lat, $topic, $dbResults)
+		//$this->load->model("searchResults_model");
+		//$dbResults = $this->searchResults_model->getAllMasters();
+		//$data['results'] = $this->curateResults($long, $lat, $topic, $dbResults)
 
 		$this->load->view("searchResults_view", $data);
 	}

@@ -48,7 +48,7 @@
             </div>
           <br/>
 
-		         <form action="/Search" method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
+		         <form method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
 					<div class="form-group">
 						<input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Discover & Learn "/>
                         <input type="hidden" id = "long" name="long" value='45.99'/>
@@ -97,7 +97,7 @@
     <script type="text/javascript">
 
 
-      /*
+      
       var availableAutosuggestions = [
         "Learn how to",
         "Learn",
@@ -111,7 +111,7 @@
         source : availableAutosuggestions
 
       });
-      */
+      
 
     // Script that gets the Location and then forwards it to the backend.
 
@@ -127,7 +127,7 @@
           // submit using jquery post
           e.preventDefault();
 
-          var searchQuery = $('#query').val();
+          var searchQuery = ($('#query').val()).toLowerCase();
           var modifiedQuery = "";
           var searchLocation = "";
           var learnTopic = "";
@@ -139,7 +139,7 @@
 
           if(searchQuery == '')
           {
-            alertMessage.text("Must enter a search term.").show().delay(3000).fadeOut();
+            alertMessage.text("Must enter a search term, I'm no Einstein!").show().delay(3000).fadeOut();
             //alert('Must enter a search term!');
             return;
           }
@@ -160,7 +160,7 @@
               // we found near in the query
               searchLocation = (searchQuery.split("near"))[1];
               modifiedQuery = (searchQuery.split(" near"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1];
+              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
               locationFound = true;
             }
             else if (indexAround > 1) 
@@ -168,14 +168,14 @@
               // keyword around is found in query
               searchLocation = (searchQuery.split("around"))[1];
               modifiedQuery = (searchQuery.split(" around"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1];
+              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
               locationFound = true;
             }
             else if(indexBy > 1)
             {
               searchLocation = (searchQuery.split("by"))[1];
               modifiedQuery = (searchQuery.split(" by"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1];
+              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
               locationFound = true;
             }
             else
@@ -189,7 +189,7 @@
             // if user did not enter a skill, then remind
             if(learnTopic == "")
             {
-              alertMessage.text("Please enter a skill to learn.").show().delay(3000).fadeOut();
+              alertMessage.text("Oops! Can't really understand what you're tryin to say, maybe e = mc^2?").show().delay(3000).fadeOut();
               return;
             }
 
@@ -208,8 +208,6 @@
 
                   userLatitude = latitude;
                   userLongitude = longitude;
-
-                  //console.log("latitude  : " + userLatitude + "  longitude   : " + userLongitude);
 
                   if(userLongitude == 0 && userLatitude == 0)
                   {
