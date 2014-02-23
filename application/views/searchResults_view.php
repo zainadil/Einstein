@@ -63,22 +63,23 @@
               
               <div id = "master-details">
                 <?php
-                    echo '<div class = "active-master-name" >' . $row['name'] . '</div> <div id="' . $row['id'] . '"></div>';
+                   // echo '<div class = "active-master-name" >' . $row['name'] . '</div> <div id="' . $row['id'] . '"></div>';
                 ?>
               </div>
           </div>
 
           <div id = "master-details-page">
-            <a href = "../../../Einstien/index.php/masterProfile" class="btn btn-default">More..</a>
+            <a href = "../../../Einstien/index.php/masterProfile?id=<?php echo $row['id']; ?>" class="btn btn-default">More..</a>
           </div>
 
           <?php
               echo '<div class="jumbotron2" id="master' . $id_num . '-extended" style="display:none;">';
           ?>
 
-            <p>abcd</p>
-            <p>abcd</p>
-            <p>abcd</p>
+            <div>Name: <?php echo $row['name']; ?></div>
+            <div>Endorsement: <?php echo $row['backers']; ?></div>
+            <div>Rating: <?php echo $row['rating']; ?></div>
+
           </div>
         </div>
 
