@@ -1,43 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Einstein</title>
-
-    <!-- Bootstrap core CSS - MUST COME FIRST -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/ceeko.css" rel="stylesheet">
-  </head>
-  <body>
-
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          </button>
-          <a class="navbar-brand" href="../Einstien" id = "header-text">Einstein</a>
-        </div>
-      
-          <ul class="nav navbar-nav navbar-right">
-            <?php if($login < 1) 
-              echo "<a href='$login_url' class='btn btn-primary navbar-btn'>Sign in</a>";
-              else { ?> 
-                <img class = "navbar-user-image" src="http://graph.facebook.com/<?php echo $user_profile['id']?>/picture">
-                <div class = "navbar-user-name"><?php echo $user_profile['name']; ?></div>
-            <?php
-              }
-            ?>  
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+  <?php $this->load->view('head'); ?>
+ 
+ <body>
+    
+    <?php $this->load->view('navbar'); ?>
 
     <div class="intro-header">
         <div class="container">
@@ -72,30 +40,7 @@
         </div> <!-- /container -->
     </div> <!-- /intro-header -->
 
-
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li><a href="#home">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#about">About</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#services">Services</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Einstein 2014. All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php $this->load->view('footer'); ?>
     
     <!-- Bootstrap core JavaScript
     ================================================== -->
