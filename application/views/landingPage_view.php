@@ -86,7 +86,7 @@
     <script type="text/javascript">
 
 
-      /*
+      
       var availableAutosuggestions = [
         "Learn how to",
         "Learn",
@@ -100,7 +100,7 @@
         source : availableAutosuggestions
 
       });
-      */
+      
 
     // Script that gets the Location and then forwards it to the backend.
 
@@ -128,7 +128,7 @@
 
           if(searchQuery == '')
           {
-            alertMessage.text("Must enter a search term.").show().delay(3000).fadeOut();
+            alertMessage.text("Must enter a search term, I'm no Einstein!").show().delay(3000).fadeOut();
             //alert('Must enter a search term!');
             return;
           }
@@ -149,7 +149,7 @@
               // we found near in the query
               searchLocation = (searchQuery.split("near"))[1];
               modifiedQuery = (searchQuery.split(" near"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1];
+              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
               locationFound = true;
             }
             else if (indexAround > 1) 
@@ -157,14 +157,14 @@
               // keyword around is found in query
               searchLocation = (searchQuery.split("around"))[1];
               modifiedQuery = (searchQuery.split(" around"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1];
+              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
               locationFound = true;
             }
             else if(indexBy > 1)
             {
               searchLocation = (searchQuery.split("by"))[1];
               modifiedQuery = (searchQuery.split(" by"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1];
+              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
               locationFound = true;
             }
             else
@@ -178,7 +178,7 @@
             // if user did not enter a skill, then remind
             if(learnTopic == "")
             {
-              alertMessage.text("Please enter a skill to learn.").show().delay(3000).fadeOut();
+              alertMessage.text("Oops! Can't really understand what you're tryin to say.").show().delay(3000).fadeOut();
               return;
             }
 
@@ -209,6 +209,7 @@
                   {
                     $('#lat').val(userLatitude);
                     $('#long').val(userLongitude);
+                    //alert(learnTopic);
                     $('#ulearnTopic').val(learnTopic);
                     $('#id-form-landing').submit();
                   }
