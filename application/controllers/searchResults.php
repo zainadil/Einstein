@@ -163,12 +163,19 @@ private $dictionary;
 
 	public function curateResults($long, $lat, $dbResults){
 
+
+		/*ONLY USING LOCATION AND REVIEWS AT THIS POINT*/
+
 		//Sort By Location
 		$numberOfElements = count($dbResults);
 		$resultsLocation = array();
 
 		for($i = 0; $i < $numberOfElements; $i++)
 			$resultsLocation[$dbResults[$i]['id']] = $this->calculateDistance($lat, $long, $dbResults[$i]['lat'], $dbResults[$i]['long']);
+
+		$resultsLocation = $this->locationSort($dbResults, $resultsLocation);
+
+		print_r($resultsLocation);
 
 		// usort($resultsLocation, array('searchResults', 'revCmp'));
 
@@ -180,9 +187,90 @@ private $dictionary;
 			$resultsReviews[$dbResults[$i]['id']] = $this->calculateReviewsScore($dbResults[$i]['rateCount'], $dbResults[$i]['rating'], $maxRateCount);	
 
 		// usort($resultsReviews, array('searchResults', 'cmp'));
+		$resultsReviews = $this->reviewSort($dbResults, $resultsReviews);
 
-		// Sort by Backers
+		die();
+
+		// Creating table with details about the master.
+
 	}
+
+	public function locationSort($dbResults, $resultsLocation)
+	{
+
+		$new_array = array();
+		for($i = 0; $i < count($dbResults); $i++)
+		{
+			$temp = array();
+			array_push($temp, $dbResults[$i]['id']); //i.e. herman singh badwall
+			array_push($temp, $resultsLocation[$dbResults[$i]['id']]); //i.e. rating by lat/lon
+			array_push($new_array, $temp);
+		}
+
+		//created the new_array[i][0-2];
+		//sort it now
+	    $size = count($new_array);
+    	for ($i=0; $i<$size; $i++) {
+        	for ($j=0; $j<$size-1-$i; $j++) {
+            	
+            	if ($new_array[$j+1][1] < $new_array[$j][1]) {
+                	
+	                //swap($arr, $j, $j+1);
+            		$tmp = $new_array[$j];
+    				$new_array[$j] = $new_array[$j+1];
+    				$new_array[$j+1] = $tmp;
+
+            	}
+        	}
+    	}
+
+    	return $new_array;
+	}
+
+	public function reviewSort($dbResults, $resultsLocation)
+	{
+
+		$new_array = array();
+		for($i = 0; $i < count($dbResults); $i++)
+		{
+			$temp = array();
+			array_push($temp, $dbResults[$i]['id']); //i.e. herman singh badwall
+			array_push($temp, $resultsLocation[$dbResults[$i]['id']]); //i.e. rating by lat/lon
+			array_push($new_array, $temp);
+		}
+
+		//created the new_array[i][0-2];
+		//sort it now
+	    $size = count($new_array);
+    	for ($i=0; $i<$size; $i++) {
+        	for ($j=0; $j<$size-1-$i; $j++) {
+            	
+            	if ($new_array[$j+1][1] > $new_array[$j][1]) {
+                	
+	                //swap($arr, $j, $j+1);
+            		$tmp = $new_array[$j];
+    				$new_array[$j] = $new_array[$j+1];
+    				$new_array[$j+1] = $tmp;
+
+            	}
+        	}
+    	}
+
+
+    // 	  	for ($i=0; $i<$size; $i++) {
+				// //other way
+    //         		$tmp = $new_array[$i];
+    // 				$new_array[$size-1-$i] = $new_array[i];
+    // 				$new_array[$j+1] = $tmp;
+        		
+    // 		}
+
+
+
+    	return $new_array;
+	}
+
+
 
 	public function revCmp($a, $b){
 		if($a == $b) 
@@ -227,9 +315,4 @@ private $dictionary;
 	public function calculateReviewsScore($reviews, $rating, $highest){
 		 return ( 0.7 * ($rating / 5) + $reviews/$highest * 0.3 );
 	}
-
-
-	// public function calculateBackersScore(){
-
-	// }
 }
