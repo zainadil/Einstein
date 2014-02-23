@@ -190,6 +190,7 @@
           var concat_id = '#' + id;
           var top = $(concat_id).position().top;
           var start_y = $(window).scrollTop();
+          expand_selected_master(id);
           do_the_scroll(top-55, 1, 1, start_y);
           allow_scrolling_to_div = false;
         }

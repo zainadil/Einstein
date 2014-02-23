@@ -12,7 +12,8 @@
       <div class = "jumbotron" style = "height : 900px;margin-top:60px">
         <div class = "active-master">
                <?php
-                  echo '<img src="http://localhost:8888/Einstien/images/processed/' . $endorsement['id'] . '_200.png" alt="' . $endorsement['name'] . '" class="active-master-profile-image">';
+                    $pieces = explode('ABCDE', $endorsement['id']);
+                  echo '<img src="http://localhost:8888/Einstien/images/processed/' . $pieces[0] . '_200.png" alt="' . $endorsement['name'] . '" class="active-master-profile-image">';
                 ?>
 
                 <br/>
