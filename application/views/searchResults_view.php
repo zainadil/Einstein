@@ -43,10 +43,6 @@
               </div>
           </div>
 
-          <div id = "master-details-page">
-            <a href = "../../../Einstien/index.php/masterProfile?id=<?php echo $row['id']; ?>" class="btn btn-default">More..</a>
-          </div>
-
           <?php
               echo '<div class="jumbotron2" id="master' . $id_num . '-extended" style="display:none;">';
           ?>
@@ -55,6 +51,7 @@
             <div>Endorsement: <?php echo $row['backers']; ?></div>
             <div>Rating: <?php echo $row['rating']; ?></div>
             <div>Distance: <?php echo $row['dist']; ?></div>
+            <a href = "../../../Einstien/index.php/masterProfile?id=<?php echo $row['id']; ?>" class="btn btn-default">More  <span class="ion-chevron-right"></span></a>
 
           </div>
         </div>
