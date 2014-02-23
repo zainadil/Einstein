@@ -68,6 +68,20 @@
             <div id = "master-profile-details">
               <div class = "active-master-profile-name" > Zain Adil </div> <div id="star"></div>
             </div>
+
+            <div id="endorse-button-parent">
+
+              <div id="endorsementCount" data-count="0">Endorsement: 0</div>
+
+              <form method="POST" class="form-inline" role="form" id="id-form-endorse" action="../../Einstien/index.php/masterProfile/">
+                <div class="form-group">
+                    <input type="hidden" id="loggedInStatus" name="loggedInStatus" value="<?php echo $login >= 1 ? 1 : 0; ?>" />
+                </div>
+                <input type="submit" name="endorseButton" value="Endorse" class="btn btn-primary btn-lg" id="endorse-button"/>
+              </form> 
+
+
+            </div>
         </div>
         <h2> Location </h2>
         <div id="map-canvas" class = "img-thumbnail" style = " height : 200px; width : 80%;">
@@ -133,5 +147,21 @@
     </script>
 
     <script src="../js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      $('#endorse-button').click(function(e){
+        e.preventDefault();
+        var userStatus = parseInt($('#loggedInStatus').val());
+        var endorsementCount = parseInt($('#endorsementCount').data('count'));
+        //alert(endorsementCount);
+        if(userStatus == 0)
+        {
+          alert("You must be logged in to endorse!");
+          return;
+        }
+
+
+      });
+    </script>
   </body>
 </html>
