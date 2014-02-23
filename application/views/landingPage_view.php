@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <?php $this->load->view('head'); ?>
+    <?php $this->load->view('head'); ?>
  
- <body>
+    <body>
     
     <?php $this->load->view('navbar'); ?>
+        
+        <div class="intro-header">
+            <div class="container">
+                <div class="centered">
+                    <h1>Einstein</h1>
+                    <h3>Discover & Learn</h3>
+                    <br/>
 
-    <div class="intro-header">
-        <div class="container">
-          <div class="centered">
+		            <form method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
+					    <div class="form-group">
+						    <input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Learn how to ____"/>
+                            <input type="hidden" id = "long" name="long" value='45.99'/>
+                            <input type="hidden" id = "lat" name="lat" value='-70.22'/>
+                            <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
+					    </div>
+					    <input type="submit" name="loginButton" value="Search" class="btn btn-primary btn-lg" id="submit-button"/>
+				    </form>
+                    <br/>
+                    <div class="alert alert-danger" id="alert-message" style="display:none;max-width:800px;margin:auto">Error!</div>
+                
+                    <?php 
+                        if (strcmp($error, "") != 0) { ?>
+                            <div class="alert alert-danger" id="error-query" style="max-width:800px;margin:auto">
+                                <?php echo $error; ?>
+                            </div>
+                            <?php 
+                        } 
+                         ?>
+                </div> 
+            </div> <!-- END container -->
+        </div> <!-- END intro-header -->
 
-            <div id = "landing-page-header">
-              <h1>Einstein</h1>
-              <h3>Discover & Learn</h3>
-            </div>
-          <br/>
-
-		         <form method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
-					<div class="form-group">
-						<input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Learn how to ___"/>
-                        <input type="hidden" id = "long" name="long" value='45.99'/>
-                        <input type="hidden" id = "lat" name="lat" value='-70.22'/>
-                        <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
-					</div>
-					<input type="submit" name="loginButton" value="Search" class="btn btn-primary btn-lg" id="submit-button"/>
-				</form>
-          <br />
-                <div class="alert alert-danger" id="alert-message" style="display:none;max-width:800px;margin:auto">Error!</div>
-                <?php
-              if(strcmp($error, "") != 0)
-              {
-              ?>
-                <div class="alert alert-danger" id="error-query" style="max-width:800px;margin:auto"><?php echo "Sorry - Having difficulties understanding your queries :("; ?></div>
-              <?php 
-              } 
-              ?>
-           </div> 
-        </div> <!-- /container -->
-    </div> <!-- /intro-header -->
-
-    <?php $this->load->view('footer'); ?>
+         <?php $this->load->view('footer'); ?>
     
     <!-- Bootstrap core JavaScript
     ================================================== -->
