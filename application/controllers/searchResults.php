@@ -221,6 +221,7 @@ private $dictionary;
 		// usort($resultsReviews, array('searchResults', 'cmp'));
 		$resultsReviews = $this->reviewSort($dbResults, $resultsReviews);
 
+
 		die();
 
 		// Creating table with details about the master.
@@ -287,17 +288,6 @@ private $dictionary;
             	}
         	}
     	}
-
-
-    // 	  	for ($i=0; $i<$size; $i++) {
-				// //other way
-    //         		$tmp = $new_array[$i];
-    // 				$new_array[$size-1-$i] = $new_array[i];
-    // 				$new_array[$j+1] = $tmp;
-        		
-    // 		}
-
-
 
     	return $new_array;
 	}
