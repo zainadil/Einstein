@@ -22,7 +22,7 @@
                             <input type="hidden" id = "long" name="long" value='45.99'/>
                             <input type="hidden" id = "lat" name="lat" value='-70.22'/>
                             <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
-                            <input type="hidden" id = "searchLocation" name="searchLocation" value="You" />
+                            <input type="hidden" id = "searchLocation" name="searchLocation" value="you" />
 					    </div>
 					    <input type="submit" name="loginButton" value="Search" class="btn btn-primary btn-lg" id="submit-button"/>
 				    </form>
