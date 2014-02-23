@@ -4,24 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <!-- Using this Style Sheet for the Einstien Font - Not sure if it flows with the complete theme - Ask Omeed for suggestions -->
-    <!-- http://designshack.net/articles/css/the-10-best-script-and-handwritten-google-web-fonts/ -->
-    <link href="http://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet" type="text/css">
+    <title>Einstein</title>
 
-    <title>Einstein - Discover and Learn</title>
-
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS - MUST COME FIRST -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/ceeko.css" rel="stylesheet">
-
   </head>
-
   <body>
 
     <!-- Fixed navbar -->
@@ -29,12 +21,7 @@
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </button>
-          <!-- <img src = "images/mustache-header.png" class "navbar-btn" id = "header-img"> -->
           <a class="navbar-brand" href="../Einstien" id = "header-text">Einstein</a>
         </div>
       
@@ -51,30 +38,54 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="intro-header">
+        <div class="container">
           <div class="centered">
 
             <div id = "landing-page-header">
-              <!-- <img src = "images/mustache-header.png" class "navbar-btn" id = "lading-page-image">   -->
-              Einstein
+              <h1>Einstein</h1>
+              <h3>Discover & Learn</h3>
             </div>
           <br/>
-          <form id="id-form-landing" class="form-signin" method="POST" action="../../Einstien/index.php/searchResults/processSearch">
-            <input type="text" class="form-control input-lg search-bar" name="query" id="query" placeholder="Discover and Learn"autofocus=""></input>
-              <br/><br/>
-              <input type="hidden" id = "long" name="long" value='45.99'/>
-              <input type="hidden" id = "lat" name="lat" value='-70.22'/>
-              <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
-             <button class="btn btn-default" type="button" name="loginButton" value="Login" id="submit-button">Search</button>
-            </form>
 
-            <br />
-            <div class="alert alert-danger" id="alert-message" style="display:none;max-width:800px;margin:auto">Error!</div>
+		         <form action="/Search" method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
+					<div class="form-group">
+						<input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Discover & Learn "/>
+                        <input type="hidden" id = "long" name="long" value='45.99'/>
+                        <input type="hidden" id = "lat" name="lat" value='-70.22'/>
+                        <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
+					</div>
+					<input type="submit" name="loginButton" value="Search" class="btn btn-primary btn-lg" id="submit-button"/>
+				</form>
+                <div class="alert alert-danger" id="alert-message" style="display:none;max-width:800px;margin:auto">Error!</div>
 
            </div> 
-    </div> <!-- /container -->
+        </div> <!-- /container -->
+    </div> <!-- /intro-header -->
 
-
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li><a href="#home">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#services">Services</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; Your Company 2013. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
