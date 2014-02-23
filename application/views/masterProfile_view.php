@@ -9,7 +9,7 @@
     
     <div class="container">
 
-      <div class = "jumbotron" style = "height : 900px;">
+      <div class = "jumbotron" style = "height : 900px;margin-top:60px">
         <div class = "active-master">
             
             <div id = "master-img">
@@ -53,7 +53,7 @@
 
         </div>
         <br/>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://google.ca" data-via="Einstien" data-lang="en" data-text = "Checkout Joh Doe, He's giving guitar Lessons" data-hashtags = "GuitarLessons" data-related="anywhereTheJavascriptAPI" data-count="vertical">Tweet</a>  
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://google.ca" data-via="Einstien" data-lang="en" data-text = "<?php ?>Checkout Joh Doe, He's giving guitar Lessons" data-hashtags = "GuitarLessons" data-related="anywhereTheJavascriptAPI" data-count="vertical">Tweet</a>  
          
     </div> <!-- /container -->
 

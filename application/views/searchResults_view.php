@@ -13,7 +13,7 @@
     <div class="container">
         <br/>
         <br/>
-        <?php echo "<h1>Results for ".ucfirst($topic)."</h1>";?>
+        <?php echo "<h1>Results for ".ucfirst($topic)." near ".$searchLocation."</h1>";?>
         <div id="map-canvas" class = "img-thumbnail" style = "height : 500px; width : 100%;"></div>
 
       <!-- php this one -->
@@ -29,31 +29,37 @@
 
       ?>
           <div class = "active-master">
-              
               <div id = "master-img">
                 <?php
                   echo '<img src="../../images/processed/' . $row['id'] . '_200.png" alt="' . $row['name'] . '" class="active-master-image">';
                 ?>
               </div>
-              
-              <div id = "master-details">
-                <?php
-                   // echo '<div class = "active-master-name" >' . $row['name'] . '</div> <div id="' . $row['id'] . '"></div>';
-                ?>
-              </div>
-          </div>
-
-          <div id = "master-details-page">
-            <a href = "../../../Einstien/index.php/masterProfile?id=<?php echo $row['id']; ?>" class="btn btn-default">More..</a>
           </div>
 
           <?php
               echo '<div class="jumbotron2" id="master' . $id_num . '-extended" style="display:none;">';
           ?>
-
-            <div>Name: <?php echo $row['name']; ?></div>
-            <div>Endorsement: <?php echo $row['backers']; ?></div>
-            <div>Rating: <?php echo $row['rating']; ?></div>
+               <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <th><?php echo $row['name']; ?></th>
+                        </tr>
+                        <tr>
+                            <td>Rating</td>
+                            <td><?php echo $row['rating']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Endorsement(s)</td>
+                            <td><?php echo $row['backers']; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Distance</td>
+                            <td><?php echo $row['dist']; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href = "../../../Einstien/index.php/masterProfile?id=<?php echo $row['id']; ?>" class="btn btn-default btn-lg">More  <span class="ion-chevron-right"></span></a>
 
           </div>
         </div>
@@ -82,7 +88,7 @@
       function initialize() {
         var mapOptions = {
           scrollwheel: false,
-          center: new google.maps.LatLng(45.553848,-73.596237),
+          center: new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $long?>),
           zoom: 12 // Load this value based on the search result
         };
 
@@ -90,6 +96,13 @@
         var markers = [];
         var master_ids = [];
 
+        myMarker = new google.maps.Marker({
+                    position: new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $long?>),
+                    map: map,
+                    title: "You"
+                });
+
+        markers.push(myMarker);
 
        <?php
        $i = 0;
@@ -143,7 +156,7 @@
                     position: new google.maps.LatLng(latitude, longitude),
                     map: map,
                     icon: imagex,
-                    title: "hi"
+                    title: "<?php echo $row['name'];?>"
                     });
 
                     markers.push(marker);
