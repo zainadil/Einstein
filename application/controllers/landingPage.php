@@ -8,6 +8,16 @@ class LandingPage extends CI_Controller {
 	
 	public function index()
 	{
+		$error = $this->input->get_post('error');
+
+		if($error != null)
+		{
+			$data['error'] = $error;
+		}
+		else
+		{
+			$data['error'] = "";
+		}
 
 		$user = $this -> facebook -> getUser();
 

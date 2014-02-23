@@ -1,42 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>Einstein</title>
-
-    <!-- Bootstrap core CSS - MUST COME FIRST -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/ceeko.css" rel="stylesheet">
-  </head>
-  <body>
-
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          </button>
-          <a class="navbar-brand" href="../Einstien" id = "header-text">Einstein</a>
-        </div>
-      
-          <ul class="nav navbar-nav navbar-right">
-            <?php if($login < 1) 
-              echo "<a href='$login_url' class='btn btn-primary navbar-btn'>Sign in</a>";
-              else { ?> 
-              <img class = "navbar-user-image" src="http://graph.facebook.com/<?php echo $user_profile['id']?>/picture"><div class = "navbar-user-name"><?php echo $user_profile['name']; ?></div>
-            <?php
-              }
-            ?>  
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+  <?php $this->load->view('head'); ?>
+ 
+ <body>
+    
+    <?php $this->load->view('navbar'); ?>
 
     <div class="intro-header">
         <div class="container">
@@ -50,41 +19,28 @@
 
 		         <form method="POST" class="form-inline" role="form" id="id-form-landing" action="../../Einstien/index.php/searchResults/processSearch">
 					<div class="form-group">
-						<input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Discover & Learn "/>
+						<input type="text" name="query" id="query" autofocus="" value="" class="form-control input-lg search-bar" placeholder="Learn how to ___"/>
                         <input type="hidden" id = "long" name="long" value='45.99'/>
                         <input type="hidden" id = "lat" name="lat" value='-70.22'/>
                         <input type="hidden" id = "ulearnTopic" name="ulearnTopic" value="userskill" />
 					</div>
 					<input type="submit" name="loginButton" value="Search" class="btn btn-primary btn-lg" id="submit-button"/>
 				</form>
+          <br />
                 <div class="alert alert-danger" id="alert-message" style="display:none;max-width:800px;margin:auto">Error!</div>
-
+                <?php
+              if(strcmp($error, "") != 0)
+              {
+              ?>
+                <div class="alert alert-danger" id="error-query" style="max-width:800px;margin:auto"><?php echo $error; ?></div>
+              <?php 
+              } 
+              ?>
            </div> 
         </div> <!-- /container -->
     </div> <!-- /intro-header -->
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li><a href="#home">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#about">About</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#services">Services</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2013. All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php $this->load->view('footer'); ?>
     
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -96,8 +52,10 @@
 
     <script type="text/javascript">
 
+      // if the error is shown then hide it
+      $('#error-query').delay(4000).fadeOut();
 
-      
+      /*
       var availableAutosuggestions = [
         "Learn how to",
         "Learn",
@@ -111,7 +69,7 @@
         source : availableAutosuggestions
 
       });
-      
+      */
 
     // Script that gets the Location and then forwards it to the backend.
 
@@ -126,6 +84,9 @@
           // prevent the default submission, dissect the query, get the latitude and longitude and then finally
           // submit using jquery post
           e.preventDefault();
+
+          //var regex = /learn ?| ?how ?| ?to ?| ?play ?| ?ride?| a ?/
+          var regex = /learn to ?|learn ?| ?how to ?| ?how ?| to | ?play a ?| ?ride a ?| a ?/
 
           var searchQuery = ($('#query').val()).toLowerCase();
           var modifiedQuery = "";
@@ -160,7 +121,9 @@
               // we found near in the query
               searchLocation = (searchQuery.split("near"))[1];
               modifiedQuery = (searchQuery.split(" near"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              //learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              modifiedQuery2 = modifiedQuery.split(regex);
+              learnTopic = modifiedQuery2[modifiedQuery2.length - 1];
               locationFound = true;
             }
             else if (indexAround > 1) 
@@ -168,14 +131,18 @@
               // keyword around is found in query
               searchLocation = (searchQuery.split("around"))[1];
               modifiedQuery = (searchQuery.split(" around"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              //learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              modifiedQuery2 = modifiedQuery.split(regex);
+              learnTopic = modifiedQuery2[modifiedQuery2.length - 1];
               locationFound = true;
             }
             else if(indexBy > 1)
             {
               searchLocation = (searchQuery.split("by"))[1];
               modifiedQuery = (searchQuery.split(" by"))[0];
-              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              //learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : (modifiedQuery.split(" to "))[1];
+              modifiedQuery2 = modifiedQuery.split(regex);
+              learnTopic = modifiedQuery2[modifiedQuery2.length - 1];
               locationFound = true;
             }
             else
@@ -183,7 +150,10 @@
               searchLocation = "navigator";
               locationFound = false;
               modifiedQuery = searchQuery;
-              learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : "";
+              //learnTopic = (modifiedQuery.split("how to "))[1] ? (modifiedQuery.split("how to "))[1] : "";
+              modifiedQuery2 = modifiedQuery.split(regex);
+              learnTopic = modifiedQuery2[modifiedQuery2.length - 1];
+              console.log(learnTopic);
             }
 
             // if user did not enter a skill, then remind

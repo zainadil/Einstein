@@ -12,23 +12,30 @@ private $dictionary;
 			
 			'bake cake' => 'bake',
 			'bake a cake' => 'bake',
+			'cake' => 'bake',
 			'bake cookie' => 'bake',
 			'bake a cookie' => 'bake',
 			'bake cookies' => 'bake',
+			'cookie' => 'bake',
+			'cookies' => 'bake',
 			'bake' => 'bake',
 			'to cook' => 'cook',
 			'cook' => 'cook',
 			'cook rice' => 'cook',
 			'cook potato' => 'cook',
 			'play guitar' => 'guitar',
+			'a guitar' => 'guitar',
 			'guitar' => 'guitar',
 			'playing guitar' => 'guitar',
 			'drive' => 'drive',
 			'driving' => 'drive',
+			'to drive' => 'drive',
 			'dance' => 'dance',
 			'dancing' => 'dance',
 			'to dance' => 'dance',
 			'code' => 'code',
+			'write code' => 'code',
+			'to write code' => 'code',
 			'to code' => 'code',
 			'coding' => 'code',
 			'singing' => 'sing',
@@ -70,12 +77,15 @@ private $dictionary;
 			'drive car' => 'car',
 			'play piano' => 'piano',
 			'piano' => 'piano',
+			'a piano' => 'piano',
 			'to play drum' => 'drum',
 			'play drum' => 'drum',
+			'a drum' => 'drum',
 			'drum' => 'drum',
 			'to play violin' => 'violin',
 			'play violin' => 'violin',
 			'violin' => 'violin',
+			'a violin' => 'violin',
 			'bass' => 'bass',
 			'bass guitar' => 'bass',
 			'to play bass guitar' => 'bass',
@@ -111,6 +121,12 @@ private $dictionary;
 
 		if($topicTemp != null)
 		{
+			// check if the index is a defined index in our dictionary
+			// if not then redirect to home page with an error message
+			if(!array_key_exists($topicTemp,$this->dictionary))
+			{
+				redirect("../../Einstien?error=Sorry, I didn't find anything.");
+			}
 			$topic = $this->dictionary[$topicTemp];
 		}
 		else
