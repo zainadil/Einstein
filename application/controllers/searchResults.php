@@ -63,6 +63,8 @@ private $dictionary;
 			'ping pong' => 'ping pong',
 			'play table tennis' => 'table tennis',
 			'table tennis' => 'table tennis',
+			'tennis' => 'tennis',
+			'play tennis' => 'tennis',
 			'play hockey' => 'hockey',
 			'hockey' => 'hockey',
 			'play football' => 'football',
@@ -126,6 +128,7 @@ private $dictionary;
 			'to ride a bicycle' => 'ride bicycle',
 			'ride a bicycle' => 'ride bicycle',
 			'ride the bicycle' => 'ride bicycle',
+			'ride bicycle' => 'ride bicycle',
 			'a bicycle' => 'ride bicycle',
 			'the bicycle' => 'ride bicycle',
 			'bicycle' => 'ride bicycle'
