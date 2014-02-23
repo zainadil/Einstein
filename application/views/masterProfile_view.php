@@ -34,6 +34,7 @@
                     <input type="hidden" id="userid" name="userid" value="<?php echo $endorsement['id']; ?>" />
                 </div>
                 <input type="submit" name="endorseButton" value="Endorse" class="btn btn-primary btn-lg" id="endorse-button"/>
+                <div id="warning-login" style="display:none">You must be logged in to endorse!</div>
               </form> 
 
 
@@ -114,7 +115,9 @@
         //alert(endorsementCount);
         if(userStatus == 0)
         {
-          alert("You must be logged in to endorse!");
+          $('#endorse-button').attr('disabled','disabled');
+          $("#warning-login").css('display', '').delay(3000).fadeOut();
+          //alert("You must be logged in to endorse!");
           return;
         }
 
