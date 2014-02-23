@@ -9,7 +9,7 @@
     
     <div class="container">
 
-      <div class = "jumbotron" style = "height : 900px;">
+      <div class = "jumbotron" style = "height : 900px;margin-top:60px">
         <div class = "active-master">
             
             <div id = "master-img">
