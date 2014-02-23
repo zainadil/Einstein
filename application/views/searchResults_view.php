@@ -25,13 +25,15 @@
       $id_num = '000' . $temp_i;
       $id_num = substr($id_num, -3, 3);
       
+
       echo '<div class = "jumbotron master-after-first" id="master' . $id_num . '" onclick="expand_selected_master(this.id)">';
 
       ?>
           <div class = "active-master">
               <div id = "master-img">
                 <?php
-                  echo '<img src="../../images/processed/' . $row['id'] . '_200.png" alt="' . $row['name'] . '" class="active-master-image">';
+                $pieces = explode("ABCDE", $row['id']);
+                  echo '<img src="../../images/processed/' . $pieces[0] . '_200.png" alt="' . $row['name'] . '" class="active-master-image">';
                 ?>
               </div>
           </div>
@@ -110,7 +112,8 @@
         {
 
           echo 'var name = "' . $row['name'] . '";';
-          echo 'var image = "../../images/processed/' . $row['id'] . '_circle.png";';
+          $pieces = explode("ABCDE", $row['id']);
+          echo 'var image = "../../images/processed/' . $pieces[0] . '_circle.png";';
 
           $i++;
           $id_num = '000' . $i;
