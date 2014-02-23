@@ -32,7 +32,7 @@
               if(strcmp($error, "") != 0)
               {
               ?>
-                <div class="alert alert-danger" id="error-query" style="max-width:800px;margin:auto"><?php echo $error; ?></div>
+                <div class="alert alert-danger" id="error-query" style="max-width:800px;margin:auto"><?php echo "Sorry - Having difficulties understanding your queries :("; ?></div>
               <?php 
               } 
               ?>

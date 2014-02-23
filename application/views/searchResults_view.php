@@ -198,11 +198,11 @@
                       <?php
                       if ($i == 0)
                       {
-                        echo 'scaledSize: new google.maps.Size(120,120)';
+                        echo 'scaledSize: new google.maps.Size(90,90)';
                       }
                       else if ($i == 1)
                       {
-                        echo 'scaledSize: new google.maps.Size(90,90)';
+                        echo 'scaledSize: new google.maps.Size(75,75)';
                       }
                       else
                       {
