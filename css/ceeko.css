@@ -1,5 +1,5 @@
 .intro-header {
-	padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+	padding-top: 50px;
 	padding-bottom: 50px;
 	color: #f8f8f8;
 	background: url(../images/intro-bg.jpg) no-repeat center center;
@@ -7,20 +7,21 @@
 	text-align: center;
 }
 
+.input-lg {
+    padding-right: 400px;
+}
+
 footer {
 	background-color: #f8f8f8;
 	padding: 50px 0;
 }
+
 p.copyright {
 	margin: 15px 0 0;
 }
 
 
-body { 
-	/*padding-top: 50px; 
-	height: 100%;
-	width: 100%;*/
-}
+
 
 .centered
 {
