@@ -4,16 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     
-
-       <?php
-        // TODO 
-        if (strcmp(basename(__FILE__), 'searchResults_view.php') == 0) {
-            echo "<title>Einstein // (CORE SEARCH TERM)</title>";
-        } 
-        else {
-            echo "<title>Einstein</title>";
-        }
-       ?> 
+        <?php 
+            if (strcmp(basename($this->router->fetch_class()), 'searchResults') == 0) {
+                echo "<title>Einstein // (CORE SEARCH TERM)</title>";
+            }
+            else {
+                echo "<title>Einstein</title>";
+            } 
+        ?> 
 
     <!-- Bootstrap core CSS - MUST COME FIRST -->
     <link href="http://localhost:8888/Einstien/css/bootstrap.min.css" rel="stylesheet">
