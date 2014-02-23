@@ -4,8 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
     
-       <?php 
-        <!-- TODO -->
+       <?php
+        // TODO 
         if (strcmp(basename(__FILE__), 'searchResults_view.php') == 0) {
             echo "<title>Einstein // (CORE SEARCH TERM)</title>";
         } 
