@@ -2,17 +2,21 @@ Einstein
 ========
 
  ![Einstein](Screenshots/1.png "Einstein")
- ![Einstein](Screenshots/2.png "Einstein")
- ![Einstein](Screenshots/3.png "Einstein")
- ![Einstein](Screenshots/4.png "Einstein")
- ![Einstein](Screenshots/5.png "Einstein")
 
 ### What
 
-### Why
+- Site lets you find a person to teach you a particular craft
+- Curated search results based on location and reviews 
+- Allows "tutors" of any craft to make a public profile, display their skills,
+  and receive endorsements and reviews on their teaching 
+- For example, learn how to paint, play guitar, code, etc.
 
 ### Tech Stack
 
+- MAMP
+- Twitter API
+- Facebook API
+- Google Maps API
 - [Bootstrap iOS7](http://jasonbradley.me/bootstrap-ios7/)
 
 ### Notes
