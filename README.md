@@ -13,6 +13,8 @@ Einstein
 
 ### Tech Stack
 
+- [Bootstrap iOS7](http://jasonbradley.me/bootstrap-ios7/)
+
 ### Notes
 
 - Place repo in (OS X) - /Applications/MAMP/htdocs/Einstien
@@ -21,3 +23,5 @@ Einstein
 ```bash
 ln -s /Applications/MAMP/htdocs/Einstien <LINK_DIR>
 ```
+
+- Landing page image source - http://www.flickr.com/photos/terryhancock/9210242042/
