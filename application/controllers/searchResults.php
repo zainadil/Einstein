@@ -132,9 +132,7 @@ private $dictionary;
 			'a bicycle' => 'ride bicycle',
 			'the bicycle' => 'ride bicycle',
 			'bicycle' => 'ride bicycle'
-
 		);
-
 	}
 	
 	public function index()
