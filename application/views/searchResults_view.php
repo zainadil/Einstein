@@ -90,7 +90,7 @@
         var mapOptions = {
           scrollwheel: false,
           center: new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $long?>),
-          zoom: 12 // Load this value based on the search result
+          zoom: 13 // Load this value based on the search result
         };
 
         var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);

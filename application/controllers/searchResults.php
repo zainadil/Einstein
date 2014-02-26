@@ -131,7 +131,10 @@ private $dictionary;
 			'ride bicycle' => 'ride bicycle',
 			'a bicycle' => 'ride bicycle',
 			'the bicycle' => 'ride bicycle',
-			'bicycle' => 'ride bicycle'
+			'bicycle' => 'ride bicycle',
+			'speak french' => 'french',
+			'french' => 'french',
+			'write french' => 'french'
 		);
 	}
 	
