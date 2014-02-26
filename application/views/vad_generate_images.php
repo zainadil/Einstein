@@ -34,8 +34,41 @@
 
 
 
+// $url_concat_name = 'Abdullah99Bangali';
+// $url_concat_name = 'Aditya99Murray';
+// $url_concat_name = 'Anirudh99Agnihotri';
+// $url_concat_name = 'Ashwin99Dey';
+
+// $url_concat_name = 'Asim99Delavenne';
 
 
+// $url_concat_name = 'Fahad99Siddiqui';
+// $url_concat_name = 'Haroon99Awan';
+// $url_concat_name = 'HermanSinghBadwal';
+// $url_concat_name = 'Itzik99JKob';
+// $url_concat_name = 'Jatin99Behl';
+// $url_concat_name = 'Jorge99Pinilla';
+// $url_concat_name = 'KhadyLoSeck';
+// $url_concat_name = 'Khan99Obyoy99Azad';
+// $url_concat_name = 'ManjeetKaur';
+// $url_concat_name = 'Matthew99Walczyk';
+// $url_concat_name = 'Maynil99Patel';
+// $url_concat_name = 'MdZahedHossain';
+// $url_concat_name = 'MehsumMansoorNaqvi';
+// $url_concat_name = 'Milandeep99Singh99Shergill';
+// $url_concat_name = 'Moustapha99Seck';
+// $url_concat_name = 'NatalySheinin';
+// $url_concat_name = 'NidaleHajjar';
+// $url_concat_name = 'OmeedSafeeRad';
+// $url_concat_name = 'Shuayb99Khan';
+// $url_concat_name = 'Taha99Rizvi';
+// $url_concat_name = 'VadimStark';
+// $url_concat_name = 'Vivek99Chaudhari';
+// $url_concat_name = 'ZainAdil';
+
+
+// pic taken from
+ //http://cdn.vectorstock.com/i/composite/84,35/map-marker-with-iconsset-five-vector-1328435.jpg
 
 
 
@@ -44,6 +77,7 @@
 // $targetFileIcon = 'http://localhost/Einstien/images/unprocessed/' . $url_concat_name . '_unprocessed.jpg';
 // $targetFileIcon = 'images/unprocessed/' . $url_concat_name . '_unprocessed.jpg';
 $targetFileIcon = 'images/unprocessed/' . $url_concat_name . '.jpg';
+$targetFileIcon2 = 'images/unprocessed/IconHolder.png';// . $url_concat_name . '.jpg';
 
 // $destinationFile = 'http://localhost/Einstien/images/processed' . $url_concat_name . '.png';
 
@@ -118,11 +152,20 @@ $round_100_image = vad_round_image_from_rectangle($im, imagecolorat($im, 0, 0));
 
 // imagepng($im, '../../images/processed/nidale_circle.png');
 // imagepng($im, 'http://localhost/Einstien/images/processed/' . $url_concat_name . '_circle.png');
-imagepng($round_100_image, 'images/processed/' . $url_concat_name . '_circle.png');
+
+
+
+// imagepng($round_100_image, 'images/processed/' . $url_concat_name . '_circle.png');
+$im2 = loadImage($targetFileIcon2);
+draw_alpha_image_ontop_of_another($round_100_image, $im2, -8);
+imagepng($im2, 'images/processed/' . $url_concat_name . '_circle.png');
+
+
 
 
 //clean up used images
 imagedestroy($im);
+imagedestroy($im2);
 imagedestroy($round_100_image);
 imagedestroy($square_image);
 
@@ -232,7 +275,28 @@ function vad_round_image_from_rectangle($img, $color) {
 }
 
 
+//alpha stuff
+function draw_alpha_image_ontop_of_another($img_over, $img_under, $offset_of_2nd)
+{
+    $width = imagesx($img_under);
+    $height = imagesy($img_under);
+    $new_width = imagesx($img_over);
+    $new_height = imagesy($img_over);//floor($height/$ratio);
 
+    $image_1 = $img_under;
+    $image_2 = $img_over;
+    imagealphablending($image_1, true);
+    imagesavealpha($image_1, true);
+    imagealphablending($image_2, true);
+    imagesavealpha($image_2, true);
+
+
+    // imagecopy($image_1, $image_2, 0, 0, $offset_of_2nd, $offset_of_2nd, 100, 100);
+        imagecopy($image_1, $image_2, 8, 8, 0, 0, 100, 100);
+        // imagecopy($image_1, $image_2, 0, 0, 0, 0, 100, 100);
+    // imagecopy($image_1, $image_2, 0, 0, 0, 0, 50, 50);
+    // imagepng($image_1, 'image_3.png');
+}
 
 
 
