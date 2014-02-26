@@ -168,3 +168,9 @@ th {
 .mater-details-table{
 	width:400px;
 }
+
+#masterNumber{
+	margin-left:20px;
+	float: left;
+	display: inline-block;
+}

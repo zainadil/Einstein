@@ -15,7 +15,7 @@
                     $pieces = explode('ABCDE', $endorsement['id']);
                   echo '<img src="http://localhost:8888/Einstien/images/processed/' . $pieces[0] . '_200.png" alt="' . $endorsement['name'] . '" class="active-master-profile-image">';
                 ?>
-
+                
                 <br/>
                <table class="table table-hover">
                     <tbody>
@@ -52,7 +52,7 @@
         
             <br/>
 
-        <h2>Location</h2>
+        <h2><b>Location</b></h2>
         <div id="map-canvas" class = "img-thumbnail" style = "height : 200px; width : 80%;">
 
         </div>

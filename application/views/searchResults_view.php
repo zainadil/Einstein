@@ -27,8 +27,8 @@
       
 
       echo '<div class = "jumbotron master-after-first" id="master' . $id_num . '" onclick="expand_selected_master(this.id)">';
-
       ?>
+      <div id = "masterNumber"> <?php echo $temp_i;?>.</div>
           <div class = "active-master">
               <div id = "master-img">
                 <?php
