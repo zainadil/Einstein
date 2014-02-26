@@ -147,6 +147,7 @@
                       else
                       {
                         echo 'scaledSize: new google.maps.Size(48,60)';
+
                       }
 
                       ?>
@@ -158,7 +159,8 @@
                     position: new google.maps.LatLng(latitude, longitude),
                     map: map,
                     icon: imagex,
-                    title: "<?php echo $row['name'];?>"
+                    title: "<?php echo $row['name'];?>",
+                    zIndex: <?php echo "" . (1000 - $i + 10);?>
                     });
 
                     markers.push(marker);
