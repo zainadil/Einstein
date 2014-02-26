@@ -496,6 +496,14 @@ private $dictionary;
 		}
 
 		$result_array = $this->final_curated_sort($result_array);
-    	return $result_array;
+
+		// Only return top 10 results.
+
+		// In the Future, page the result. Also fix the styling and so on.
+		$finaResults = array();
+		for($i = 0; $i < 10; $i++)
+			$finaResults[$i] = $result_array[$i];
+
+    	return $finaResults;
 	}
 }

@@ -39,8 +39,11 @@ p.copyright {
 
 .active-master{
 	display: inline-block;
+	width: 400px;
 }
 
+.active-master img{
+}
 .search-bar {
 	display:inline-block;
 }
@@ -66,7 +69,7 @@ th {
    width: 80px;
    height: 80px;
    border-radius: 40px;
-   margin-bottom: 20px;
+   margin-bottom: -10px;
 }
 
 .active-master-profile-image{
@@ -76,13 +79,13 @@ th {
    margin-bottom: 20px;
 }
 
-.active-master-name{
+#master-name{
 	display: inline-block;
 	font-size: 25px;
+	margin-top: -20px;
 }
 
 #master-img{
-	float:left;
 }
 
 #master-details{
@@ -160,4 +163,8 @@ th {
 	height: 47px;
 	font-size: 23px;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.mater-details-table{
+	width:400px;
 }

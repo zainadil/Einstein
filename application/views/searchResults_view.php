@@ -36,17 +36,16 @@
                   echo '<img src="../../images/processed/' . $pieces[0] . '_200.png" alt="' . $row['name'] . '" class="active-master-image">';
                 ?>
               </div>
+              <div id = "master-name">
+                <b><?php echo $row['name']; ?> </b>
+              </div>
           </div>
 
           <?php
-              echo '<div class="jumbotron2" id="master' . $id_num . '-extended" style="display:none;">';
+              echo '<div id="master' . $id_num . '-extended" style="display:none;">';
           ?>
-               <table class="table table-hover">
+               <table class="table table-hover master-details-table">
                     <tbody>
-                        <tr>
-                            <th>Name</th>
-                            <th><?php echo $row['name']; ?></th>
-                        </tr>
                         <tr>
                             <td>Rating</td>
                             <td><?php echo $row['rating']; ?></td>
