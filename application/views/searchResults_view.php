@@ -138,15 +138,15 @@
                       <?php
                       if ($i == 0)
                       {
-                        echo 'scaledSize: new google.maps.Size(90,90)';
+                        echo 'scaledSize: new google.maps.Size(72,90)';
                       }
                       else if ($i == 1)
                       {
-                        echo 'scaledSize: new google.maps.Size(75,75)';
+                        echo 'scaledSize: new google.maps.Size(60,75)';
                       }
                       else
                       {
-                        echo 'scaledSize: new google.maps.Size(60,60)';
+                        echo 'scaledSize: new google.maps.Size(48,60)';
                       }
 
                       ?>
