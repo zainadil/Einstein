@@ -138,15 +138,16 @@
                       <?php
                       if ($i == 0)
                       {
-                        echo 'scaledSize: new google.maps.Size(90,90)';
+                        //116, 145      i.e 23 to 29
+                        echo 'scaledSize: new google.maps.Size(92,116)';
                       }
                       else if ($i == 1)
                       {
-                        echo 'scaledSize: new google.maps.Size(75,75)';
+                        echo 'scaledSize: new google.maps.Size(69,87)';
                       }
                       else
                       {
-                        echo 'scaledSize: new google.maps.Size(60,60)';
+                        echo 'scaledSize: new google.maps.Size(46,58)';
                       }
 
                       ?>
@@ -158,7 +159,8 @@
                     position: new google.maps.LatLng(latitude, longitude),
                     map: map,
                     icon: imagex,
-                    title: "<?php echo $row['name'];?>"
+                    title: "<?php echo $row['name'];?>",
+                    zIndex: <?php echo "" . (1000 - $i + 10);?>
                     });
 
                     markers.push(marker);
