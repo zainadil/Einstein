@@ -489,7 +489,6 @@ private $dictionary;
 			$final_scores[$i][2] = $final_scores[$i][0] + $final_scores[$i][1];
 		}
 
-
 		//now that we have the final score, create the new array with [id, final_score] pairs, and sort it
 		$result_array = array();
 		for($i = 0; $i < count($resultsLocation); $i++)

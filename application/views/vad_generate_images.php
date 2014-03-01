@@ -34,14 +34,15 @@
 
 
 
+
+
+
+
 // $url_concat_name = 'Abdullah99Bangali';
 // $url_concat_name = 'Aditya99Murray';
 // $url_concat_name = 'Anirudh99Agnihotri';
 // $url_concat_name = 'Ashwin99Dey';
-
 // $url_concat_name = 'Asim99Delavenne';
-
-
 // $url_concat_name = 'Fahad99Siddiqui';
 // $url_concat_name = 'Haroon99Awan';
 // $url_concat_name = 'HermanSinghBadwal';
@@ -65,6 +66,8 @@
 // $url_concat_name = 'VadimStark';
 // $url_concat_name = 'Vivek99Chaudhari';
 // $url_concat_name = 'ZainAdil';
+
+
 
 
 // pic taken from
@@ -158,7 +161,9 @@ $round_100_image = vad_round_image_from_rectangle($im, imagecolorat($im, 0, 0));
 // imagepng($round_100_image, 'images/processed/' . $url_concat_name . '_circle.png');
 $im2 = loadImage($targetFileIcon2);
 draw_alpha_image_ontop_of_another($round_100_image, $im2, -8);
-imagepng($im2, 'images/processed/' . $url_concat_name . '_circle.png');
+
+// imagepng($im2, 'images/processed/' . $url_concat_name . '_circle.png');
+imagepng($round_100_image, 'images/processed/' . $url_concat_name . '_circle.png');
 
 
 

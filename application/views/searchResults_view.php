@@ -138,19 +138,19 @@
                       <?php
                       if ($i == 0)
                       {
-                        echo 'scaledSize: new google.maps.Size(72,90),';
-                        echo 'anchor: new google.maps.Point(36,90)';
+                        // echo 'scaledSize: new google.maps.Size(72,90)';
+                        echo 'scaledSize: new google.maps.Size(72,72)';
                       }
                       else if ($i == 1)
                       {
-                        echo 'scaledSize: new google.maps.Size(60,75),';
-                        echo 'anchor: new google.maps.Point(30,75)';
-
+                        // echo 'scaledSize: new google.maps.Size(60,75)';
+                        echo 'scaledSize: new google.maps.Size(60,60)';
                       }
                       else
                       {
-                        echo 'scaledSize: new google.maps.Size(48,60),';
-                        echo 'anchor: new google.maps.Point(24,60)';
+                        // echo 'scaledSize: new google.maps.Size(48,60)';
+                        echo 'scaledSize: new google.maps.Size(48,48)';
+
                       }
 
                       ?>
