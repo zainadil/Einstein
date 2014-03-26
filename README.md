@@ -27,7 +27,8 @@ Blogpost : http://zainadil.com/einstein/
 - MAMP
 - Twitter API
 - Facebook API
-- Google Maps API
+- Google Maps v3 API
+- jQuery
 - [Bootstrap iOS7](http://jasonbradley.me/bootstrap-ios7/)
 
 ### Notes
