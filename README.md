@@ -29,7 +29,7 @@ McHacks 2014 (McGill University Hackathon)
 
 ### Tech Stack
 
-- MAMP
+- MAMP (Mac, Apache, MySQL, PHP)
 - Twitter API
 - Facebook API
 - Google Maps v3 API
